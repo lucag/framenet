@@ -4,3 +4,4 @@ __pycache__/
 /.idea/
 /framenet.iml
 /notebooks
+/data
