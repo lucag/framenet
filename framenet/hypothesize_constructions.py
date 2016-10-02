@@ -13,18 +13,18 @@ Ideally, we'll want a third way:
 
 """
 
-from src.hypothesis import *
-from src.lexical_units import *
+from framenet.hypothesis import *
+from framenet.lexical_units import *
+
+event_elements = ['Time', 'Place', 'Duration']
 
 
-event_elements = ['Time', 'Place','Duration']
-
-def hypothesize_construction_from_pattern(valence_pattern, n=1):
+def from_pattern(valence_pattern, n=1):
     hypothesis = HypothesizedConstruction(valence_pattern.frame, n=n)
     hypothesis.add_annotations(valence_pattern.annotations)
     total = sum(i.total for i in valence_pattern.valenceUnits)
     for unit in valence_pattern.valenceUnits:
-        #if unit.pt not in ["2nd", "pp[because of]"]:
+        # if unit.pt not in ["2nd", "pp[because of]"]:
         probabilities = [1.0, .9]  # Is this right? These are for doing direct fit for valence patterns, so maybe
         pt = unit.pt.replace("[", "-").replace("]", "")
         constituent = Constituent(pt, unit.fe, unit.gf, probabilities)
@@ -32,11 +32,11 @@ def hypothesize_construction_from_pattern(valence_pattern, n=1):
     return hypothesis
 
 
-def hypothesize_construction_from_collapsed_pattern(valence_pattern, n=1):
+def from_collapsed_pattern(valence_pattern, n=1):
     hypothesis = HypothesizedConstruction(valence_pattern.frame, n=n)
     total = sum(i.total for i in valence_pattern.valenceUnits)
     for unit in valence_pattern.valenceUnits:
-        #if unit.pt not in ["2nd", "pp[because of]"]:
+        # if unit.pt not in ["2nd", "pp[because of]"]:
         ommission_prob = round((unit.total / valence_pattern.total), 3)
         if ommission_prob <= 0:
             ommission_prob = 0.001
@@ -47,11 +47,11 @@ def hypothesize_construction_from_collapsed_pattern(valence_pattern, n=1):
     return hypothesis
 
 
-
-
 def collapse_with_seed(initial_pattern, other_list, frame):
     for i in other_list:
-        if (i not in initial_pattern.valenceUnits) and (frame.get_element(i.fe).coreType == "Core") and i.pt not in ['INI', 'DNI', 'CNI']:
+        if (i not in initial_pattern.valenceUnits
+            and frame.get_element(i.fe).coreType == "Core"
+            and i.pt not in ['INI', 'DNI', 'CNI']):
             add = True
             for j in initial_pattern.valenceUnits:
                 base_element, element = frame.get_element(i.fe), frame.get_element(j.fe)
@@ -76,7 +76,7 @@ def filter_collapsed_patterns(collapsed_patterns):
 
 
 def collapse_valences_to_cxns(frame, filter=True):
-    all_patterns=[]
+    all_patterns = []
     s = [valence for valence in frame.individual_valences if valence.lexeme.split(".")[1] == "v"]
     if filter:
         s = filter_by_pp(s)
@@ -87,7 +87,7 @@ def collapse_valences_to_cxns(frame, filter=True):
             continue
         initial_pattern.add_valenceUnit(i)
         all_patterns.append(collapse_with_seed(initial_pattern, by_total, frame))
-    return filter_collapsed_patterns(all_patterns)      
+    return filter_collapsed_patterns(all_patterns)
 
 
 def filter_by_pp(valences):

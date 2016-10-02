@@ -1,13 +1,10 @@
-from src.builder import *
-
-
-
-"""
-
-@author: Sean Trott
-NOTES: Currently, filter_redundancies will check whether a given valence pattern 
+"""@author: Sean Trott
+NOTES: Currently, filter_redundancies will check whether a given valence pattern
 has already been added to a list. If it has, it combines the totals.
 """
+
+from framenet.builder import *
+
 
 def collapse_valences_for_frame(frame, filter=True):
     initial_pattern = ValencePattern(frame.name, 0, None)
@@ -15,7 +12,7 @@ def collapse_valences_for_frame(frame, filter=True):
     if filter:
         s = filter_by_pp(s)
     by_total = sorted(s, key=lambda valence: valence.total, reverse=True)
-    #for valence in frame.individual_valences:
+    # for valence in frame.individual_valences:
     initial_pattern.add_valenceUnit(by_total[0])
     for i in by_total:
         if (i not in initial_pattern.valenceUnits) and (frame.get_element(i.fe).coreType == "Core"):
@@ -46,6 +43,7 @@ def filter_by_pp(valences):
             second[second.index(new)].add_annotations(new.annotations)
     return second
 
+
 def hypothesize_constructions(frame):
     return frame
 
@@ -63,20 +61,19 @@ def find_common_patterns(frame1, frame2):
     for element in second:
         if element in first and element not in intersection:
             intersection.append(element)
-    #intersection = [element for element in first if element in second]
+    # intersection = [element for element in first if element in second]
     return intersection
 
 
 # Returns a sorted list of all valence patterns for a given frame.
 # The list is sorted by the valence pattern's "total".
 def all_valences(frame, filter=False):
-
     total = get_valence_patterns(frame)
 
     if filter:
         total = filter_valences(total, frame)
         total = filter_by_pp_type(total)
-    #return total
+    # return total
     return sorted(filter_redundancies(total), key=lambda valence: valence.total, reverse=True)
 
 
@@ -99,8 +96,8 @@ def all_family_valences(topFrame, fn, fnb, filter=False):
         print("Propagated elements for {}".format(child))
         total += get_valence_patterns(child_frame)
     print("\n")
-    #print("Now filtering redundancies in list....")
-    
+    # print("Now filtering redundancies in list....")
+
     print("Now filtering by PP type...")
     total = filter_by_pp_type(total)
     print("Now filtering by non-core elements according to {}...".format(topFrame.name))
@@ -110,12 +107,11 @@ def all_family_valences(topFrame, fn, fnb, filter=False):
     for i in total:
         i.frame = topFrame.name
     return total
-    #return sorted(filter_redundancies(total), key=lambda valence: valence.total, reverse=True)
+    # return sorted(filter_redundancies(total), key=lambda valence: valence.total, reverse=True)
 
 
-
-#Remove non-core, multiple constituents, and null instantiations 
-#TO DO: remove multiple constituents (things that map onto same FE)
+# Remove non-core, multiple constituents, and null instantiations
+# TO DO: remove multiple constituents (things that map onto same FE)
 def filter_valences(all_valence_patterns, frame):
     new = []
     for pattern in all_valence_patterns:
@@ -145,6 +141,7 @@ def filter_valences(all_valence_patterns, frame):
         new.append(new_pattern)
     return new
 
+
 def filter_redundancies(patterns):
     seen = []
     for pattern in patterns:
@@ -154,7 +151,7 @@ def filter_redundancies(patterns):
             index = seen.index(pattern)
             seen[index].total += pattern.total
             seen[index].add_annotations(pattern.annotations)
-    #return list(set(patterns))
+    # return list(set(patterns))
     return seen
 
 
@@ -164,14 +161,14 @@ def filter_by_pp_type(patterns):
     for pattern in patterns:
         new_pattern = ValencePattern(pattern.frame, pattern.total, pattern.lexeme)
         for v in pattern.valenceUnits:
-            #new_unit = ValenceUnit
-            new_valence = v.clone() 
+            # new_unit = ValenceUnit
+            new_valence = v.clone()
             pt = v.pt.replace("[", "-").split("-")[0]
             if pt == "PP":
                 fe = v.fe
                 pt = "{}-PP".format(fe)
                 new_valence.pt = pt
-            
+
             new_pattern.add_valenceUnit(new_valence)
         new_pattern.add_annotations(pattern.annotations)
         new_patterns.append(new_pattern)
@@ -179,7 +176,7 @@ def filter_by_pp_type(patterns):
 
 
 def collapse_all(base, rest, frame):
-    new_pattern = ValencePattern(base.frame, base.total, base.lu) #Actually amalgamation of lus
+    new_pattern = ValencePattern(base.frame, base.total, base.lu)  # Actually amalgamation of lus
     new_pattern.valenceUnits = list(base.valenceUnits)
     for pattern in rest:
         new_pattern = collapse_patterns(new_pattern, pattern, frame)
@@ -188,9 +185,9 @@ def collapse_all(base, rest, frame):
 
 # Takes in a "BASE" pattern and attempts to collapse it with another pattern
 def collapse_patterns(base, second, frame):
-    new_pattern = ValencePattern(base.frame, base.total, base.lu) #Actually amalgamation of lus
+    new_pattern = ValencePattern(base.frame, base.total, base.lu)  # Actually amalgamation of lus
     new_pattern.valenceUnits = list(base.valenceUnits)
-    #for pattern in second:
+    # for pattern in second:
     for unit in second.valenceUnits:
         element = frame.get_element(unit.fe)
         add = True
@@ -199,7 +196,7 @@ def collapse_patterns(base, second, frame):
             if not frame.compatible_elements(base_element, element):
                 add = False
             if unit.pt == base_unit.pt:
-                #add = False
+                # add = False
                 pass
             if unit in new_pattern.valenceUnits:
                 add = False

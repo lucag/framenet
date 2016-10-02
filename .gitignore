@@ -1,3 +1,6 @@
 *.pyc
 __pycache__/
 *.class
+/.idea/
+/framenet.iml
+/notebooks
