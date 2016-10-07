@@ -212,4 +212,4 @@ class FEGroupRealization(object):
         return "Total: {} \nValence Patterns: {}".format(self.total, str(self.valencePatterns))
 
     def __eq__(self, other):
-        return (self.elements == other.elements)  # and (self.valencePatterns == other.valencePatterns)
+        return self.elements == other.elements  # and (self.valencePatterns == other.valencePatterns)

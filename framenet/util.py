@@ -1,11 +1,12 @@
 """Utilities, some ECG-specific, some very general.
 """
-from collections import defaultdict
-from collections        import namedtuple, Callable, Sequence, Iterable
+
+import wrapt
+
+from collections        import namedtuple, Callable, Sequence, Iterable, defaultdict
 from functools          import reduce, wraps
 from itertools          import chain, islice
 from operator           import concat
-
 from decorator          import decorate
 from multipledispatch   import dispatch
 
@@ -80,12 +81,14 @@ def curry(func):
 #             return _curried(f, *(args + args2), **dict(kw, **kwargs2))
 #
 #         return _partial
-#
-#
-# def curry2(f):
+
+
+# @wrapt.decorator
+# def curry2(wrapped, instance, args, kwargs):
 #     """Decorator to curry a function. Typical usage:
 #     >>> @curry2
 #     ... def foo(a, b, c):
+#     ...    "This is foo docstring!"
 #     ...    return a + b + c
 #
 #     The function still work normally:
@@ -121,7 +124,14 @@ def curry(func):
 #     ...
 #     TypeError: foo() takes 3 positional arguments but 4 were given
 #     """
-#     return decorate(f, _curried)
+#
+#     if len(args) + len(kwargs) >= wrapped.__code__.co_argcount:
+#         return wrapped(*args, **kwargs)
+#     else:
+#         def _partial(*args2, **kwargs2):
+#             return wrapped(*(args + args2), **dict(kwargs, **kwargs2))
+#
+#         return _partial
 
 
 # noinspection PyPep8Naming

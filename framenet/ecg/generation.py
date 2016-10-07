@@ -1,19 +1,30 @@
-"""A module for ECG-related stuff.
+"""
+In beta. Attempting to formulate procedures to hypothesize/build
+ECG constructions from valence data. So far, there are a couple of methods:
+
+1) Directly from valence patterns --> one valence pattern generates one HypothesizedConstruction
+    * hypothesize_construction_from_pattern({PATTERN}, {N=index in total list})
+2) From an entire frame, using individual valences --> build custom "valence patterns" from compatible valence units.
+    * CXNS = collapse_valences_to_cxns({FRAME}, {FILTER=boolean})
+    * for cxn in CXNS: hypothesize_construction_from_collapsed_pattern(CXNS, {N=index})
+
+Ideally, we'll want a third way:
+3) Top-down processing, fitting valence patterns to the existing grammar.
+
 """
 
 import os
 import xml.etree.ElementTree as et
-from pprint import pprint
-
 import pandas                as pd
 
-from itertools        import chain
+from glob                      import glob
+from itertools                 import chain
+from os.path                   import join
 
-from framenet.hypothesize_constructions import from_collapsed_pattern, from_pattern
-from .example.scripts import build_cxns_for_frame
-from .utils           import curry, flatmap, memoize, unique, flatten, invert
-from os.path          import join
-from glob             import glob
+from framenet.ecg import Construction, Constituent
+from framenet.example.scripts import get_valence_patterns, invert_preps
+from framenet.lexical_unit import ValencePattern
+from framenet.util             import curry, flatmap, memoize, unique, flatten, invert
 
 
 # This test is for verbs only
@@ -65,29 +76,6 @@ def get_cxns(fn, fnb, frame="Motion", role="Manner", pos="V"):
 
     # DEMO: PREPOSITION CONSTRUCTIONS (distinct from build_cxns_for_frame, above)
     # prepositions = utils.build_prepositions(fn)
-
-
-# class FnFrame(object):
-#     def __init__(self, fn, frame):
-#         self.fn, self.frame = fn, frame
-#
-#     def parents(self):
-#         fn = self.fn
-#         return [FnFrame(fn, fn.get_frame(f)) for f in self.frame.parents]
-#
-#     def ancestors(self):
-#
-#     # def elements(self):
-#     #     for
-#     #     return
-#
-#
-# class Schema(object):
-#     def __init__(self, fn_frame): pass
-#
-#
-# class Construction(object):
-#     def __init__(self, fn_frame): pass
 
 
 @curry
@@ -179,7 +167,7 @@ def fe_relations_for(fn, frame):
     crit      = fe_rels['relationSubID'].map(lambda i: i in ancs)
     cols      = ('relationSubFrameName', 'subFEName',
                  'relationType',
-                 'relationSuperFrameName', 'subFEName')
+                 'relationSuperFrameName', 'superFEName')
     # noinspection PyUnresolvedReferences
     return fe_rels.loc[crit, cols]
 
@@ -242,7 +230,7 @@ def format_schema(fn, frame):
     if len(frame.fe_relations) > 0:
         final += "     constraints \n"
 
-    def as_ecg_contraint(relation):
+    def as_ecg_constraint(relation):
         f1, f2 = map(maybe_ns, (relation.fe1.lower(), relation.fe2.lower()))
         if relation.name == 'Using':
             f1 = relation.superFrame.lower() + "." + f1
@@ -254,7 +242,7 @@ def format_schema(fn, frame):
         else:
             return '       // inherited from %s: %s' % (relation.superFrame, r.lstrip())
 
-    return final + '\n'.join(as_ecg_contraint(rel) for rel in frame.fe_relations)
+    return final + '\n'.join(as_ecg_constraint(rel) for rel in frame.fe_relations)
 
 
 def generate_schemas_for_frames(frames):
@@ -454,4 +442,143 @@ if __name__ == '__main__':
     import doctest
     doctest.testmod()
 
+event_elements = ['Time', 'Place', 'Duration']
 
+
+def from_pattern(valence_pattern, n=1):
+    hypothesis = Construction(valence_pattern.frame, n=n)
+    hypothesis.add_annotations(valence_pattern.annotations)
+    total = sum(i.total for i in valence_pattern.valenceUnits)
+    for unit in valence_pattern.valenceUnits:
+        # if unit.pt not in ["2nd", "pp[because of]"]:
+        probabilities = [1.0, .9]  # Is this right? These are for doing direct fit for valence patterns, so maybe
+        pt = unit.pt.replace("[", "-").replace("]", "")
+        constituent = Constituent(pt, unit.fe, unit.gf, probabilities)
+        hypothesis.add_constituent(constituent)
+    return hypothesis
+
+
+def from_collapsed_pattern(valence_pattern, n=1):
+    hypothesis = Construction(valence_pattern.frame, n=n)
+    total = sum(i.total for i in valence_pattern.valenceUnits)
+    for unit in valence_pattern.valenceUnits:
+        # if unit.pt not in ["2nd", "pp[because of]"]:
+        ommission_prob = round((unit.total / valence_pattern.total), 3)
+        if ommission_prob <= 0:
+            ommission_prob = 0.001
+        probabilities = [ommission_prob, .9]
+        pt = unit.pt.replace("[", "-").replace("]", "")
+        constituent = Constituent(pt, unit.fe, unit.gf, probabilities)
+        hypothesis.add_constituent(constituent)
+    return hypothesis
+
+
+def collapse_with_seed(initial_pattern, other_list, frame):
+    for i in other_list:
+        if (i not in initial_pattern.valenceUnits
+                and frame.get_element(i.fe).coreType == "Core"
+                and i.pt not in ['INI', 'DNI', 'CNI']):
+            add = True
+            for j in initial_pattern.valenceUnits:
+                base_element, element = frame.get_element(i.fe), frame.get_element(j.fe)
+                if not frame.compatible_elements(base_element, element):
+                    add = False
+                if i.pt == j.pt or i.fe == j.fe:
+                    add = False
+                if i.fe in event_elements:
+                    add = False
+            if add:
+                initial_pattern.add_valenceUnit(i)
+    initial_pattern.total = sum(i.total for i in initial_pattern.valenceUnits)
+    return initial_pattern
+
+
+def filter_collapsed_patterns(collapsed_patterns):
+    new_list = []
+    for g in collapsed_patterns:
+        if g not in new_list:
+            new_list.append(g)
+    return new_list
+
+
+def collapse_valences_to_cxns(frame, filter=True):
+    all_patterns = []
+    s = [valence for valence in frame.individual_valences if valence.lexeme.split(".")[1] == "v"]
+    if filter:
+        s = filter_by_pp(s)
+    by_total = sorted(s, key=lambda valence: valence.total, reverse=True)
+    for i in by_total:
+        initial_pattern = ValencePattern(frame.name, 0, None)
+        if i.pt in ['INI', 'DNI', 'CNI']:
+            continue
+        initial_pattern.add_valenceUnit(i)
+        all_patterns.append(collapse_with_seed(initial_pattern, by_total, frame))
+    return filter_collapsed_patterns(all_patterns)
+
+
+def filter_by_pp(valences):
+    """ Should return a reduced list with valence PT changed to more general PT, e.g. "Area-PP". """
+    second = []
+    for i in valences:
+        new = i.clone()
+        if i.pt.split("[")[0] == "PP":
+            new.pt = "{}-PP".format(i.fe)
+        if new not in second:
+            second.append(new)
+        else:
+            second[second.index(new)].total += new.total
+            second[second.index(new)].add_annotations(new.annotations)
+    return second
+
+
+def build_cxns_for_frame(frame_name, fn, fnb, role_name, pos, filter_value=False):
+    """
+    Takes in:
+    -frame_name, e.g. "Motion"
+    -FrameNet object (fn)
+    -FrameNetBuilder object (fnb)
+    -"filter_value" boolean: determines if you want to filter valence patterns
+    -role_name: role to modify in types/tokens
+    -pos: lexical unit POS to create tokens for (e.g., "V")
+
+    TO DO: add PP constructions?
+
+    Returns:
+    -tokens
+    -types
+    -VP valences (non-collapsed)
+    -VP valences (collapsed)
+    -VP constructions (non-collapsed)
+    -vP constructions (collapsed)
+    """
+
+    pos_to_type = dict(V="LexicalVerbType",
+                       N="NounType")
+
+    fnb.build_lus_for_frame(frame_name, fn)
+    frame          = fn.get_frame(frame_name)
+    tokens         = generate_tokens(frame, fn, role_name, pos)
+    # types  = utils.generate_types(frame, fn, role_name, pos_to_type[pos])
+
+    valence_patterns   = get_valence_patterns(frame)
+    collapsed_valences = collapse_valences_to_cxns(frame)
+
+    cxns_all       = generate_cxns_from_patterns(valence_patterns, collapsed=False)
+    cxns_collapsed = generate_cxns_from_patterns(collapsed_valences)
+
+    roles          = [v.fe for v in frame.individual_valences if v.pt.split("[")[0].lower() == "pp"]
+    types          = invert_preps(frame.individual_valences)
+    pp             = generate_pps_from_roles(roles)
+    prep_types     = generate_general_preps_from_roles(roles)
+    prepositions   = generate_preps_from_types(types, fn)
+
+    returned = dict(tokens=tokens,
+                    types=types,
+                    valence_patterns=valence_patterns,
+                    collapsed_valences=collapsed_valences,
+                    cxns_all=cxns_all,
+                    cxns_collapsed=cxns_collapsed,
+                    pp=pp,
+                    prep_types=prep_types,
+                    prepositions=prepositions)
+    return returned

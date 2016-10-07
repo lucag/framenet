@@ -7,8 +7,8 @@ Other associated Frame classes are defined in frame_relation and lexical_units.
 
 import xml.etree.ElementTree as et
 
-from framenet.lexical_units  import ShallowLU
-from pprint                  import pformat
+from framenet.lexical_unit  import ShallowLU
+from pprint                 import pformat
 
 
 class Node(object):

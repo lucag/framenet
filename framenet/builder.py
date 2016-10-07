@@ -14,8 +14,8 @@ from os.path                import join
 
 from framenet.annotation    import Annotation
 from framenet.framenet      import FrameNet
-from framenet.frames        import FrameBuilder, FrameElementRelation
-from framenet.lexical_units import LexicalUnit, FERealization, FEGroupRealization, ValencePattern, Valence
+from framenet.frame         import FrameBuilder, FrameElementRelation
+from framenet.lexical_unit  import LexicalUnit, FERealization, FEGroupRealization, ValencePattern, Valence
 
 URI     = "{http://framenet.icsi.berkeley.edu}"
 FN_HOME = getenv('FN_HOME', '/opt/var/data/fndata-1.6')

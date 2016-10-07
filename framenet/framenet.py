@@ -4,8 +4,7 @@ This module primarily defines the FrameNet class and other associated classes/me
 """
 
 from itertools import chain
-
-from .utils import dfs_iterator
+from .util     import dfs_iterator
 
 
 class TypeSystemException(Exception): pass

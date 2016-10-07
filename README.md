@@ -1,12 +1,22 @@
 # framenet
 Package for reading in FrameNet data and performing operations on it, such as creating ECG grammars.
 
-See more in the [tutorial](https://github.com/icsi-berkeley/framenet/wiki/FrameNet-Querying-Tutorial).
+## Installation
 
-If you're using BASH and want to build a customized FrameNet object, run:
+The packages now supports `pip`. To install (in dev mode), do
 
 ```bash
-$ ./build.sh
+$ pip intstall -e .
+```
+
+See more in the [tutorial](https://github.com/icsi-berkeley/framenet/wiki/FrameNet-Querying-Tutorial).
+
+To build a customized FrameNet object, run:
+
+```python
+from framenet.builder import build
+
+fn, fnb = build()
 ```
 
 You can then retrieve a frame object by referencing the "fn" (FrameNet) object:
