@@ -4,7 +4,7 @@ setup(
     name             = 'framenet',
     version          = '0.1.0',
     packages         = ['framenet'],
-    install_requires = ['pandas>=0.18', 'multipledispatch>=0.4.8', 'decorator'],
+    install_requires = ['pandas>=0.18', 'multipledispatch>=0.4.8', 'decorator', 'qgrid'],
     url              = 'https://github.com/icsi-berkeley/framenet',
     license          = 'MIT',
     author           = 'Sean Trott, Luca Gilardi',
