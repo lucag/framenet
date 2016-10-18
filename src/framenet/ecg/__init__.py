@@ -1,13 +1,12 @@
-"""
-Classes for constructing and formatting ECG constructions from valence patterns.
+"""Classes for constructing and formatting ECG constructions from valence patterns.
 
 Question: What to do with subcase of Transitive_action, etc.?
-
 """
+from typing import List
 
 
 class Construction(object):
-    def __init__(self, frame, parent="ArgumentStructure", n=1):
+    def __init__(self, frame, parent, n):
         self.frame = frame
         self.parent = parent
         self.constituents = []
@@ -33,15 +32,16 @@ class Construction(object):
                 final += "        {}\n".format(constituent.format_constituent())
         final += "      meaning: {}\n".format(self.frame)
         final += "       constraints\n"
-        final += "         self.m <--> v.m\n"  # HACK
+        final += "         self.m \u27f7 v.m\n"  # HACK
         for constituent in self.constituents:
             final += "         {}\n".format(constituent.format_constraint())
         return final
 
 
 class Constituent(object):
-    """ Represnts an ECG construction constituent. Contains: name (POS), frame element (role binding),
-    and probabilities (omission, extraposition). P should be of the form [p1, p2]. """
+    """Represnts an ECG construction constituent. Contains: name (POS), frame element (role binding),
+    and probabilities (omission, extraposition). P should be of the form [p1, p2].
+    """
 
     def __init__(self, pt, fe, gf, probabilities):
         self.pt = pt
@@ -54,5 +54,43 @@ class Constituent(object):
 
     def format_constraint(self):
         if self.gf == "Ext":
-            return "ed.profiledParticipant <--> self.m.{}".format(self.fe)
+            return "ed.profiledParticipant \u27f7 self.m.{}".format(self.fe)
         return "self.m.{} <--> {}.m".format(self.fe, self.pt.lower())
+
+
+class Constraint:
+    pass
+
+
+class Role:
+    def __init__(self, name, type_):
+        self.name, self.type = name, type_
+
+
+class Binding(Constraint):
+    def __init__(self, left: List[Role], right: List[Role]):
+        self.left, self.right = left, right
+
+
+class Type:
+    def __init__(self, name: str, parents: List['Type']):
+        self.name, self.parents = name, parents
+
+    def subtypeof(self, other) -> bool:
+        if self == other:
+            return True
+        else:
+            return any(p.subtypeof(other) for p in self.parents)
+
+
+
+_types = None
+
+
+
+class Schema(Type):
+    def __init__(self, name: str, parents: List[Type], roles: List[str], constraints):
+        super().__init__(name, parents)
+        self.roles      = roles
+        self.contraints = constraints
+
