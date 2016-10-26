@@ -3,7 +3,9 @@ __pycache__/
 *.class
 /.idea/
 /framenet.iml
-/notebooks
 /data
 /tmp
 *.egg-info/
+.ipynb_checkpoints/
+*.csv
+*.pkl
