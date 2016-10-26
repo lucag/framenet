@@ -1,14 +1,19 @@
 """Utilities, some ECG-specific, some very general.
 """
+import string, sys, wrapt
 
-import wrapt
-
+# @formatter:off
+from functools          import partial
+from pprint             import pformat
+from typing             import List, TypeVar, NamedTuple, Any, Tuple, Union
 from collections        import namedtuple, Callable, Sequence, Iterable, defaultdict
 from functools          import reduce, wraps
 from itertools          import chain, islice
 from operator           import concat
 from decorator          import decorate
 from multipledispatch   import dispatch
+from abc                import ABC, abstractmethod
+# @formatter:on
 
 
 def curry(func):
@@ -57,38 +62,21 @@ def curry(func):
             return func(*args, **kw)
         else:
             # return _partial(func, *args, **kwargs)
-            def _partial(*args2, **kwargs2):
+            def _partial(*_args, **_kwargs):
                 # print('args:', args, 'args2:', args2)
                 # print('kwargs:', kwargs, 'kwargs2:', kwargs2)
                 # print('_curried', inspect.signature(_curried))
-                return _curried(*(args + args2), **dict(kw, **kwargs2))
+                return _curried(*(args + _args), **dict(kw, **_kwargs))
 
             return _partial
 
     return _curried
 
 
-# def _curried(f, *args, **kw):
-#     if len(args) + len(kw) >= f.__code__.co_argcount:
-#         # print('args:', args, 'kwargs:', kwargs)
-#         return f(*args, **kw)
-#     else:
-#         # return partial(func, *args, **kwargs)
-#         def _partial(*args2, **kwargs2):
-#             # print('args:', args, 'args2:', args2)
-#             # print('kwargs:', kwargs, 'kwargs2:', kwargs2)
-#             # print('_curried', inspect.signature(_curried))
-#             return _curried(f, *(args + args2), **dict(kw, **kwargs2))
-#
-#         return _partial
-
-
-# @wrapt.decorator
-# def curry2(wrapped, instance, args, kwargs):
+# def curry2(func):
 #     """Decorator to curry a function. Typical usage:
 #     >>> @curry2
 #     ... def foo(a, b, c):
-#     ...    "This is foo docstring!"
 #     ...    return a + b + c
 #
 #     The function still work normally:
@@ -125,20 +113,25 @@ def curry(func):
 #     TypeError: foo() takes 3 positional arguments but 4 were given
 #     """
 #
-#     if len(args) + len(kwargs) >= wrapped.__code__.co_argcount:
-#         return wrapped(*args, **kwargs)
-#     else:
-#         def _partial(*args2, **kwargs2):
-#             return wrapped(*(args + args2), **dict(kwargs, **kwargs2))
+#     @wrapt.decorator
+#     def _curried(wrapped, instance, args, kwargs):
+#         if len(args) + len(kwargs) >= func.__code__.co_argcount:
+#             print('args:', args, 'kwargs:', kwargs, 'co_argcount:', func.__code__.co_argcount, file=sys.stderr)
+#             return wrapped(*args, **kwargs)
+#         else:
+#             # return _partial(func, *args, **kwargs)
+#             def _partial(*_args, **_kwargs):
+#                 print('args:',   args,   '_args:',   _args,   file=sys.stderr)
+#                 print('kwargs:', kwargs, '_kwargs:', _kwargs, file=sys.stderr)
+#                 # print('_curried', inspect.signature(_curried))
+#                 return _curried(func, instance, *(args + _args), **dict(kwargs, **_kwargs))
 #
-#         return _partial
+#     return _curried(func)
 
 
-# noinspection PyPep8Naming
-# @decorate
-class singleton(object):
+def singleton(class_):
     """Singleton. Usage:
-    >>> @singleton()
+    >>> @singleton
     ... class foo:
     ...     pass
     >>> x, y, z = foo(), foo(), foo()
@@ -157,45 +150,54 @@ class singleton(object):
     foo
     """
 
-    def __init__(self, *args, **kwds):
-        update(self, instance=None, args=args, kwds=kwds)
+    class_.__only_instance__ = None
 
-    def __call__(self, cls):
-        @wraps(cls)
-        def init(*args, **kwds):
-            if self.instance is None:
-                self.instance = cls(*self.args, **self.kwds)
-            return self.instance
+    @wrapt.decorator
+    def _singleton(wrapped, instance, args, kwargs):
+        if not class_.__only_instance__:
+            class_.__only_instance__ = wrapped(*args, **kwargs)
 
-        return init
+        return class_.__only_instance__
+
+    return _singleton(class_)
 
 
-def memoize(f):
-    """A simple memoize implementation. It works by adding a .cache dictionary
-    to the decorated function.
+def memoize(f, cache=None):
+    """A simple memoize implementation. It works by adding a ._cache dictionary
+    to the decorated function. Usage:
+    >>> @memoize
+    ... def fib(n):
+    ...    return 1 if n in (0, 1) else fib(n - 1) + fib(n - 2)
+    >>> fib(0)
+    1
+    >>> fib(1)
+    1
+    >>> fib(10)
+    89
     """
-    def _memoize(func, *args, **kw):
-        if kw:  # frozenset is used to ensure hashability
-            key = args, frozenset(kw.items())
-        else:
-            key = args
-        cache = func.cache  # attribute added by memoize
-        if key not in cache:
-            # print('memoize: cache miss')
-            val = cache[key] = func(*args, **kw)
-            return val
-        # print('memoize: cache HIT')
-        return cache[key]
+    @wrapt.decorator
+    def _memoize(wrapped, instance, args, kwargs):
+        # frozenset is used to ensure hashability
+        key   = (args, frozenset(kwargs.value())) if kwargs else args
+        _cache = f.__cache__
+        # print('memoize: key:', key, 'args:', args, file=sys.stderr)
+        # TODO: optimize lookup with sentinel, measure gains!
+        if key not in _cache:
+            # print('_memoize: _cache MISS for', key, id(_cache), file=sys.stderr)
+            value = _cache[key] = wrapped(*args, **kwargs)
+            return value
+        # print('_memoize: _cache HIT for', key, id(_cache), file=sys.stderr)
+        return _cache[key]
 
-    f.cache = {}
-    return decorate(f, _memoize)
+    # print('_memoize:', 'setting _cache', file=sys.stderr)
+    f.__cache__ = cache or dict()
+    return _memoize(f)
 
 
 class Struct(object):
     """Create an instance with argument=value slots.
-    This is for making a lightweight object whose class doesn't matter.
+    This is for making a lightweight object whose class doesn't matter. (Author: P. Norvig)
     """
-
     def __init__(self, **entries): self.__dict__.update(entries)
 
     def __eq__(self, other):
@@ -258,7 +260,7 @@ def getattrs(names, default, obj):
 def getitem(index, default, seq):
     try:
         return seq[index]
-    except (IndexError, TypeError) as e:
+    except (IndexError, KeyError) as e:
         if default is __unset__:
             raise
         else:
@@ -305,7 +307,8 @@ class Stack(object):
         return bool(self.xs)
 
 
-Cons, Nil = namedtuple('Cons', 'car cdr'), ()
+Nil  = None
+Cons = NamedTuple('Cons', [('car', Any), ('cdr', 'Cons')])
 
 
 def as_iter(cons):
@@ -329,7 +332,7 @@ def flip(f):
     return lambda cdr, car: f(car, cdr)
 
 
-def creverse(cons):
+def creverse(cons: Cons) -> Cons:
     return reduce(flip(Cons), as_iter(cons), Nil)
 
 
@@ -338,15 +341,15 @@ class Queue(object):
     >>> q = Queue()
     >>> q.cons(1)
     >>> q
-    Q(1)
+    Queue(1)
     >>> q.cons(2)
     >>> q
-    Q(1, 2)
+    Queue(1, 2)
     >>> q.snoc()
     1
     >>> q.cons(3)
     >>> q
-    Q(2, 3)
+    Queue(2, 3)
     >>> q.snoc()
     2
     >>> q.snoc()
@@ -370,7 +373,7 @@ class Queue(object):
     False
     >>> q2.cons('a')
     >>> q2
-    Q('a')
+    Queue('a')
     >>> bool(q2)
     True
     >>> q2.snoc()
@@ -402,10 +405,7 @@ class Queue(object):
             self.front, self.rear = creverse(self.rear), Nil
         return self.front
 
-    def __repr__(self):
-        return 'Q(%s)' % ', '.join(repr(x) for x in iter(self))
-
-    __str__ = __repr__
+    __repr__ = __str__ = lambda self: 'Queue(%s)' % ', '.join(repr(x) for x in iter(self))
 
     def __bool__(self):
         return self._check() is not Nil
@@ -502,6 +502,42 @@ def unique(xs):
             ys.append(x)
             marked.add(x)
     return ys
+
+
+@curry
+def cata(f, tree):
+    """A catamorphism:
+    data Tree a = Node a [Tree a] deriving (Show)
+
+    cata :: (a -> [b] -> b) -> Tree a -> b
+    cata f (Node root children) = f root (map (cata f) children)
+    """
+    return f(tree.value(), map(cata(f), tree.children()))
+
+
+def juxt(*fs):
+    if not fs:
+        return lambda *xs: []
+    else:
+        f, *rest = fs
+        return lambda *xs: [f(*xs)] + juxt(*rest)(*xs)
+
+
+def compose(*fs):
+    """Function composition. Usage:
+    >>> f = lambda x: x + 1
+    >>> g = lambda x: x * 2
+    >>> h = compose(f, g)
+    >>> h(4)
+    9
+    """
+    if not fs:
+        return lambda x: x
+    elif len(fs) == 1:
+        return fs[0]
+    else:
+        f, *rest = fs
+        return lambda x: f(compose(*rest)(x))
 
 
 if __name__ == "__main__":

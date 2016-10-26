@@ -2,7 +2,9 @@
 
 Question: What to do with subcase of Transitive_action, etc.?
 """
-from typing import List
+from typing import List, Iterable, Tuple, Any
+
+from framenet.util import singleton
 
 
 class Construction(object):
@@ -73,8 +75,14 @@ class Binding(Constraint):
 
 
 class Type:
-    def __init__(self, name: str, parents: List['Type']):
-        self.name, self.parents = name, parents
+    def __init__(self, name: str, parents: Iterable['Type']):
+        self.name, self.parents = name, tuple(parents)
+
+    def __eq__(self, other) -> bool:
+        return type(self) is type(other) and self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
 
     def subtypeof(self, other) -> bool:
         if self == other:
@@ -82,10 +90,28 @@ class Type:
         else:
             return any(p.subtypeof(other) for p in self.parents)
 
+    __str__ = __repr__ = lambda self: '%s ^%s' % (self.name, self.parents)
 
 
-_types = None
+@singleton
+class Types(set):
+    pass
 
+
+def new_type(name, parents=()):
+    ts = Types()
+    if name not in ts and all(p in ts for p in parents):
+        t = Type(name, parents)
+        ts.add(t)
+        return t
+    else:
+        raise TypeError('Type %s already exists' % name)
+
+
+def ancestors(type_: Type) -> Iterable[Type]:
+    yield type_
+    for t in type_.parents:
+        yield from ancestors(t)
 
 
 class Schema(Type):

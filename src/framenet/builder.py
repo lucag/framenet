@@ -17,10 +17,12 @@ from framenet.framenet      import FrameNet
 from framenet.frame         import FrameBuilder, FrameElementRelation
 from framenet.lexical_unit  import LexicalUnit, FERealization, FEGroupRealization, ValencePattern, Valence
 
+# formatter:off
 URI     = "{http://framenet.icsi.berkeley.edu}"
 FN_HOME = getenv('FN_HOME', '/opt/var/data/fndata-1.6')
 
 
+# formatter:on
 def build(data_path=FN_HOME):
     if not access(data_path, R_OK):
         print('FrameNet data not found. Please set FN_HOME and retry.', file=sys.stderr)
@@ -37,7 +39,7 @@ def build(data_path=FN_HOME):
 
 
 class FramenetBuilder(object):
-    """Takes in a path to the frames directory, relations file, and lu directory. Call read() to read in frames.
+    """ Takes in a path to the frames directory, relations file, and lu directory. Call read() to read in frames.
 
     To obtain LU valence information, call build_lus_for_frame, passing in the name of the frame, e.g.
     "Motion", and a FrameNet object, "fn".
@@ -51,7 +53,7 @@ class FramenetBuilder(object):
         self.replace_tag = "{http://framenet.icsi.berkeley.edu}"
 
     def read(self):
-        """Builds FrameNet object.
+        """ Builds FrameNet object.
         """
         fn = FrameNet()
         files = listdir(self.frames_path)
@@ -65,7 +67,7 @@ class FramenetBuilder(object):
         return fn
 
     def read_relations(self, fn):
-        """Reads in FE relations. Currently restricted to Inheritance, Using, and Causative_of.
+        """ Reads in FE relations. Currently restricted to Inheritance, Using, and Causative_of.
         """
         root = et.parse(self.relations_file_path).getroot()
         # relation_tags = ("Inheritance", "Using", "Causative_of", "Perspective_on")
@@ -94,8 +96,7 @@ class FramenetBuilder(object):
         """
         frame = fn.get_frame(frame_name)
         if len(frame.lexicalUnits) <= 0:
-            pass
-            # print("No lexical units for {}.".format(frame_name))
+            raise ValueError("No lexical units for {}.".format(frame_name))
         elif type(frame.lexicalUnits[0]) == LexicalUnit:
             print("These lexical units have already been built.")
         else:

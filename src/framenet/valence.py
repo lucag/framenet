@@ -220,7 +220,7 @@ def find_pp_roles(valences):
 
 def invert_roles(roles):
     inverted = {}
-    for k, v in roles.items():
+    for k, v in roles.value():
         for prep in v:
             if prep not in inverted:
                 inverted[prep] = []

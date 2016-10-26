@@ -13,18 +13,25 @@ Ideally, we'll want a third way:
 
 """
 
-import os
-import xml.etree.ElementTree as et
-import pandas                as pd
+# @formatter:off
+import os, string, operator, re
 
-from glob                      import glob
+import xml.etree.ElementTree   as et
+import pandas                  as pd
+
+from pprint                    import pprint
+from abc                       import abstractmethod, ABC
+from typing                    import List, Callable, Sequence, Any, Generic, Iterable, Iterator, TypeVar
+from collections               import OrderedDict
+from glob                      import glob, iglob
 from itertools                 import chain
 from os.path                   import join
-
-from framenet.ecg import Construction, Constituent
-from framenet.example.scripts import get_valence_patterns, invert_preps
-from framenet.lexical_unit import ValencePattern
-from framenet.util             import curry, flatmap, memoize, unique, flatten, invert
+from framenet.ecg              import Construction, Constituent
+from framenet.example.scripts  import get_valence_patterns, invert_preps
+from framenet.lexical_unit     import ValencePattern
+from framenet.util             import curry, flatmap, memoize, unique, flatten, invert, iget, getitems, juxt, compose
+from multimethods              import MultiMethod, Default
+from multipledispatch          import dispatch
 
 
 # This test is for verbs only
@@ -45,10 +52,11 @@ from framenet.util             import curry, flatmap, memoize, unique, flatten, 
 # Based on an input frame, builds tokens sub of {Frame}Type
 # Each token is an lu from frame and sub-frames
 # role_name should be the role you want to modify in parent frame
+from numpy import NaN
 
 
 def get_schemas(fn):
-    """ Returns list of ECG schemas from FrameNet frames. """
+    """Returns list of ECG schemas from FrameNet frames."""
     return generate_schemas_for_frames(fn.frames)
 
 
@@ -86,19 +94,11 @@ def et_loader(base, path):
 
 
 # TODO: This stuff needs to be better organized
-URI         = 'http://framenet.icsi.berkeley.edu'
-base_dir    = os.getenv('FN_HOME')
-frame_dir   = join(base_dir, 'frame')
-frame_root  = et_loader(frame_dir)
-rel_root    = et_loader(base_dir)
-et_roots    = lambda path: (frame_root(fname) for fname in glob('%s/*.xml' % path))
-
-
-def maybe_int(kv_pair):
-    """Make the value an int if the key contains ID.
-    """
-    k, v = kv_pair
-    return k, (int(v) if 'ID' in k else v)
+URI          = 'http://framenet.icsi.berkeley.edu'
+base_dir     = os.getenv('FN_HOME')
+dir_names    = '.', 'frame', 'lu', 'fulltext'
+base_for     = OrderedDict((d, join(base_dir, d)) for d in dir_names)
+root_for     = {k: et_loader(v) for k, v in base_for.items()}
 
 
 @curry
@@ -123,28 +123,188 @@ def _iter(uri, frame, tag):
 it = _iter(URI)
 
 
+T = TypeVar('T')
+class Tree(ABC, Generic[T]):
+    @abstractmethod
+    def children(self) -> List[T]: return []
+
+    @abstractmethod
+    def value(self) -> T: return None
+
+    __repr__ = __str__ = lambda self: '%s with %d children' % (self.__class__.__name__, len(self.children()))
+
+    def traverse(self, depth=0) -> Iterator[T]:
+        yield depth, self.value()
+        for c in self.children():
+            yield from c.traverse(depth + 1)
+
+
+class TestTree(Tree):
+    """A Test tree. Usage:
+    >>> TT = TestTree
+    >>> t  = TT(1, [TT(2), TT(3)])
+    >>> def f(items, children): return TestTree(items + 1, children)
+    >>> cata(f, t)
+    TestTree: 2 [TestTree: 3, TestTree: 4]
+    """
+    def __init__(self, value, children=None):
+        self._value, self._children = value, children or []
+
+    def value(self):
+        return self._value
+
+    def children(self):
+        return self._children
+
+
+def strip_ns(s):
+    """Remove namespace spec. from string `s`."""
+    return s[s.rindex('}') + 1:]
+
+
+def maybe_int(item):
+    """Make the value an int if the key contains ID.
+    """
+    k, v = item
+    print('k:', k, 'v:', v)
+    return k, (int(v) if 'ID' in k else v)
+
+
+def typify(item):
+    """Guess type of value and try to enforce it."""
+    k, v = item
+    try:
+        return k, int(v)
+    except ValueError:
+        return k, v
+
+
+@curry
+def qualify(tag, item):
+    # pprint(item)
+    k, v = item
+    return '%s_%s' % (strip_ns(tag), k), v
+
+
+def dispatch_items(et_elem: et.Element) -> str:
+    return strip_ns(et_elem.tag)
+
+
+# This is it!
+items = MultiMethod('items', dispatch_items)
+items.__doc__ = """Return items for a specific XML <element ...>. See also `dispatch_items."""
+
+# Exclude these from <label ...>
+# label_exclude = re.compile('start|end|cBy|.*[cC]olor')
+label_exclude = re.compile('cBy|.*[cC]olor')
+
+
+@items.method('label')
+def label_items(elem: et.Element, exclude=label_exclude):
+    # span = [('span', iget('start', 'end', default=NaN)(elem.attrib))]
+    # ii = span + [(k, v) for k, v in elem.items() if not exclude.match(k)]
+    ii = [(k, v) for k, v in elem.items() if not exclude.match(k)]
+    # print('label_items: ii:', ii)
+    return [qualify(elem.tag, typify(i)) for i in ii]
+
+
+aset_exclude = re.compile('cDate')
+
+
+@items.method('annotationSet')
+def aset_items(elem: et.Element, exclude=aset_exclude):
+    trans = compose(qualify(elem.tag), typify)
+    return [trans(i) for i in elem.items() if not exclude.match(i[0])]
+
+
+@items.method('text')
+def text_items(elem: et.Element):
+    return [qualify(elem.tag, ('contents', elem.text.strip()))]
+
+
+@items.method(Default)
+def default_items(elem: et.Element):
+    trans = compose(qualify(elem.tag), typify)
+    return [trans(i) for i in elem.items()]
+
+
+class EtTree(Tree):
+    def __init__(self, et_root: et.Element) -> None:
+        assert isinstance(et_root, et.Element)
+        self.et_root = et_root
+        self._items  = items(et_root)
+
+    def value(self):
+        return self._items
+
+    def children(self):
+        return [EtTree(c) for c in iter(self.et_root)]
+
+    def __repr__(self):
+        ii   = ['%s: %s' % (a, v) for a, v in self.value()]
+        tag  = strip_ns(self.et_root.tag)
+        rest = [c for c in self.children()]
+        return '%s %s' % (tag, ii) if not rest else '%s %s\n  %s' % (tag, ii, rest)
+
+    __str__ = __repr__
+
+
+@curry
+def unstack(min_depth: int, tree: Tree) -> List[List[T]]:
+    """Unstack tree at `tree`.
+    """
+    @curry
+    def unstack_one(d: int, t: Tree) -> List[List[T]]:
+        cs = t.children()
+        if not cs:
+            return [[t.value()]]
+        elif not cs[0].children() and d < min_depth:
+            return [[t.value()] + vs for vs in unstack_many(d + 1, cs)]
+        else:
+            vss = flatmap(unstack_one(d + 1), cs)
+            return [[t.value()] + vs for vs in vss]
+
+    # Note to self: this is actually a cross product!
+    @curry
+    def unstack_many(d: int, ts: List[T]) -> List[List[T]]:
+        if not ts:
+            return [[]]
+        else:
+            t, *rest = ts
+            vss      = flatmap(unstack_one(d + 1), rest)
+            return [vs1 + vs2 for vs1 in unstack_one(d + 1, t) for vs2 in vss]
+
+    return unstack_one(0, tree)
+
+
 @memoize
 def _frame_element_relations(root):
     """Builds the entire table off of the root XML element."""
     rtypes  = it(root, 'frameRelationType')
     cap     = lambda s: s[0].upper() + s[1:]
-    items   = lambda fer, fr, rt: chain(fer.items(),
+    items   = lambda fer, fr, rt: chain(fer.value(),
                                         [('relationType', rt.get('name'))],
-                                        [('relation%s' % cap(k), v) for k, v in fr.items()])
+                                        [('relation%s' % cap(k), v) for k, v in fr.value()])
     return [dict(map(maybe_int, items(fer, fr, rt)))
             for rt in rtypes for fr in rt for fer in fr]
 
 
 @memoize
 def frame_element_relations(xml_fname='frRelation', as_dataframe=False):
+    loader = root_for['.']
     if as_dataframe:
-        return pd.DataFrame(_frame_element_relations(rel_root(xml_fname)))
+        return pd.DataFrame(_frame_element_relations(loader(xml_fname)))
     else:
-        return _frame_element_relations(rel_root(xml_fname))
+        return _frame_element_relations(loader(xml_fname))
 
 
-def frames(path=frame_dir):
-    return flatmap(frame_element, et_roots(path))
+def frames(path=base_for['frame']):
+    """Return all frames.
+    """
+    loader   = root_for[path]
+    et_roots = (loader(fname) for fname in iglob('%s/*.xml' % path))
+
+    return flatmap(frame_element, et_roots)
 
 
 @curry
@@ -152,7 +312,7 @@ def frame_element(root):
     """Builds a single frame/fe record, off of the root XML element."""
     attrs  = 'ID coreType name'.split()
     pairs  = lambda f, fe: chain(
-                [(k, v) for k, v in fe.items() if k in attrs],
+                [(k, v) for k, v in fe.value() if k in attrs],
                 [('frameID', f.get('ID'))])
     fs     = it(root, 'frame')
     return [dict(map(maybe_int, pairs(f, fe)))
@@ -243,6 +403,7 @@ def format_schema(fn, frame):
             return '       // inherited from %s: %s' % (relation.superFrame, r.lstrip())
 
     return final + '\n'.join(as_ecg_constraint(rel) for rel in frame.fe_relations)
+# @formatter:on
 
 
 def generate_schemas_for_frames(frames):
@@ -308,7 +469,7 @@ def generate_cxns_from_patterns(patterns, collapsed=True):
 def generate_preps_from_types(types, fn):
     returned = ""
     preps = sorted([lu for lu in fn.lexemes_to_frames.keys() if lu.split(".")[1] == "prep"])
-    for k, v in types.items():
+    for k, v in types.value():
         meaning = None
         supers = ["{}-Preposition".format(supertype) for supertype in v]
         name = k.split("[")[1].replace("]", "")
