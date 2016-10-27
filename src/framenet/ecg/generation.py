@@ -183,7 +183,7 @@ def typify(item):
 def qualify(tag, item):
     # pprint(item)
     k, v = item
-    return '%s_%s' % (strip_ns(tag), k), v
+    return '%s.%s' % (strip_ns(tag), k), v
 
 
 def dispatch_items(et_elem: et.Element) -> str:
