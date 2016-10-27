@@ -201,7 +201,7 @@ class Struct(object):
     def __init__(self, **entries): self.__dict__.update(entries)
 
     def __eq__(self, other):
-        return isinstance(other, Struct) and self.__dict__, other.__dict__
+        return type(other) is Struct and self.__dict__ == other.__dict__
 
     def __hash__(self): return self.__dict__.__hash__()
 
