@@ -9,7 +9,8 @@ This hasn't been fully integrated into the rest of the module, but can be used t
 """
 
 import xml.etree.ElementTree as et
-from framenet.frames import Node
+
+from framenet.frame import Node
 
 
 class SemType(Node):

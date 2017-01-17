@@ -14,24 +14,21 @@ Ideally, we'll want a third way:
 """
 
 # @formatter:off
-import os, string, operator, re
-
+import os, re
 import xml.etree.ElementTree   as et
 import pandas                  as pd
 
-from pprint                    import pprint
-from abc                       import abstractmethod, ABC
-from typing                    import List, Callable, Sequence, Any, Generic, Iterable, Iterator, TypeVar
+from abc                       import ABC, abstractmethod
 from collections               import OrderedDict
-from glob                      import glob, iglob
+from glob                      import iglob
 from itertools                 import chain
 from os.path                   import join
-from framenet.ecg              import Construction, Constituent
-from framenet.example.scripts  import get_valence_patterns, invert_preps
+from typing                    import Generic, Iterator, List, TypeVar
+from framenet.data.scripts     import get_valence_patterns, invert_preps
+from framenet.ecg              import Constituent, Construction
 from framenet.lexical_unit     import ValencePattern
-from framenet.util             import curry, flatmap, memoize, unique, flatten, invert, iget, getitems, juxt, compose
-from multimethods              import MultiMethod, Default
-from multipledispatch          import dispatch
+from framenet.util             import cata, compose, curry, flatmap, flatten, invert, memoize, unique
+from multimethods              import Default, MultiMethod
 
 
 # This test is for verbs only
@@ -52,7 +49,6 @@ from multipledispatch          import dispatch
 # Based on an input frame, builds tokens sub of {Frame}Type
 # Each token is an lu from frame and sub-frames
 # role_name should be the role you want to modify in parent frame
-from numpy import NaN
 
 
 def get_schemas(fn):
@@ -95,6 +91,7 @@ def et_loader(base, path):
 
 # TODO: This stuff needs to be better organized
 URI          = 'http://framenet.icsi.berkeley.edu'
+FN           = {'fn': URI}
 base_dir     = os.getenv('FN_HOME')
 dir_names    = '.', 'frame', 'lu', 'fulltext'
 base_for     = OrderedDict((d, join(base_dir, d)) for d in dir_names)
@@ -131,7 +128,7 @@ class Tree(ABC, Generic[T]):
     @abstractmethod
     def value(self) -> T: return None
 
-    __repr__ = __str__ = lambda self: '%s with %d children' % (self.__class__.__name__, len(self.children()))
+    __repr__ = __str__ = lambda self: '%s with %d children' % (self.__class__.__name__, len(list(self.children())))
 
     def traverse(self, depth=0) -> Iterator[T]:
         yield depth, self.value()
@@ -140,12 +137,7 @@ class Tree(ABC, Generic[T]):
 
 
 class TestTree(Tree):
-    """A Test tree. Usage:
-    >>> TT = TestTree
-    >>> t  = TT(1, [TT(2), TT(3)])
-    >>> def f(items, children): return TestTree(items + 1, children)
-    >>> cata(f, t)
-    TestTree: 2 [TestTree: 3, TestTree: 4]
+    """A Test tree.
     """
     def __init__(self, value, children=None):
         self._value, self._children = value, children or []
@@ -277,6 +269,15 @@ def unstack(min_depth: int, tree: Tree) -> List[List[T]]:
     return unstack_one(0, tree)
 
 
+def unstack_one(element):
+    """Unstack the whole XML subtree at `element`."""
+    return [dict(flatten(vs)) for vs in unstack(2, EtTree(element))]
+
+
+def unstack_all(elements):
+    return flatmap(unstack_one, elements)
+
+
 @memoize
 def _frame_element_relations(root):
     """Builds the entire table off of the root XML element."""
@@ -289,7 +290,7 @@ def _frame_element_relations(root):
             for rt in rtypes for fr in rt for fer in fr]
 
 
-@memoize
+# @memoize
 def frame_element_relations(xml_fname='frRelation', as_dataframe=False):
     loader = root_for['.']
     if as_dataframe:
@@ -333,7 +334,7 @@ def fe_relations_for(fn, frame):
 
 
 def inherited_elements(src_frames):
-    return unique(flatten(p.elements for p in src_frames))
+    return unique(list(flatten(p.elements for p in src_frames)))
 
 
 def format_schema(fn, frame):

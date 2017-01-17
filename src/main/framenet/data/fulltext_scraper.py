@@ -17,4 +17,5 @@ def scrape_file(xmlpath):
 
 path = "fndata-1.6/fulltext/PropBank__ElectionVictory.xml"
 
-d = scrape_file(path)
+if __name__ == '__main__':
+    print(scrape_file(path))

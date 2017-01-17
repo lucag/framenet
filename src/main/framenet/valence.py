@@ -2,6 +2,7 @@
 NOTES: Currently, filter_redundancies will check whether a given valence pattern
 has already been added to a list. If it has, it combines the totals.
 """
+
 from framenet.lexical_unit import ValencePattern
 
 

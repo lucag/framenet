@@ -1,21 +1,22 @@
 """Utilities, some ECG-specific, some very general.
 """
-import string, sys, wrapt
+import string, sys, wrapt, itertools, math
 
 # @formatter:off
 from functools          import partial
-from pprint             import pformat
-from typing             import List, TypeVar, NamedTuple, Any, Tuple, Union
-from collections        import namedtuple, Callable, Sequence, Iterable, defaultdict
+from pprint             import pformat, pprint
+from typing             import TypeVar, NamedTuple, Any, Tuple, Union, Generic, Dict, Mapping, List as TList
+from collections        import namedtuple, Callable, Sequence, Iterable, defaultdict, Hashable, MutableMapping, Iterator, Set
 from functools          import reduce, wraps
 from itertools          import chain, islice
-from operator           import concat
+from operator           import concat, itemgetter
 from decorator          import decorate
 from multipledispatch   import dispatch
 from abc                import ABC, abstractmethod
 # @formatter:on
 
 
+# TODO: This had to be made "transparent".
 def curry(func):
     """Decorator to curry a function. Typical usage:
     >>> @curry
@@ -161,7 +162,6 @@ def singleton(class_):
 
     return _singleton(class_)
 
-
 def memoize(f, cache=None):
     """A simple memoize implementation. It works by adding a ._cache dictionary
     to the decorated function. Usage:
@@ -193,7 +193,6 @@ def memoize(f, cache=None):
     f.__cache__ = cache or dict()
     return _memoize(f)
 
-
 class Struct(object):
     """Create an instance with argument=value slots.
     This is for making a lightweight object whose class doesn't matter. (Author: P. Norvig)
@@ -209,7 +208,6 @@ class Struct(object):
         args = ['%s=%s' % (k, repr(v)) for (k, v) in vars(self).items()]
         return 'Struct(%s)' % ', '.join(sorted(args))
 
-
 def update(x, **entries):
     """Update a dict, or an object with slots, according to entries.
     >>> sorted(update({'a': 1}, a=10, b=20).items())
@@ -223,30 +221,35 @@ def update(x, **entries):
         x.__dict__.update(entries)
     return x
 
-
 @dispatch(Sequence)
 def flatten(xss):
+    # print(f'flatten(Sequence): {xss}')
     return reduce(concat, xss, [])
-
 
 @dispatch(Iterable)
 def flatten(it):
-    return chain.from_iterable(it)
+    # print(f'flatten(Iterable): {it}')
+    ret = chain.from_iterable(it)
+    if ret is None:
+        print('flatten: returning None!!!', file=sys.stderr)
+    return ret
 
+@dispatch(Set)
+def flatten(s):
+    # print('flatten(%s)' % s)
+    return reduce(lambda b, a: b | a, s, frozenset())
 
-@dispatch(Callable, Iterable)
+@dispatch(Callable, Iterator)
 def flatmap(f, it):
     return flatten(map(f, it))
 
-
 @dispatch(Callable, Sequence)
 def flatmap(f, xs):
+    # print('flatmap(_, Sequence)')
     return reduce(concat, map(f, xs), [])
-
 
 # A value to signal an unset default
 __unset__ = '__unset__'
-
 
 @curry
 def getattrs(names, default, obj):
@@ -255,7 +258,6 @@ def getattrs(names, default, obj):
     else:
         return tuple(getattr(obj, n, default) for n in names)
 
-
 @curry
 def getitem(index, default, seq):
     try:
@@ -263,14 +265,14 @@ def getitem(index, default, seq):
     except (IndexError, KeyError) as e:
         if default is __unset__:
             raise
+        elif callable(default):
+            return default(index, seq)
         else:
             return default
-
 
 @curry
 def getitems(indices, default, seq):
     return tuple(getitem(i, default, seq) for i in indices)
-
 
 def iget(*indices, default=__unset__):
     if not indices:
@@ -279,7 +281,6 @@ def iget(*indices, default=__unset__):
         return getitem(indices[0], default)
     else:
         return getitems(indices, default)
-
 
 def aget(*names, default=__unset__):
     if not names:
@@ -291,7 +292,6 @@ def aget(*names, default=__unset__):
             return lambda obj: getattr(obj, names[0], default)
     else:
         return getattrs(names, default)
-
 
 class Stack(object):
     def __init__(self, xs=None):
@@ -306,35 +306,51 @@ class Stack(object):
     def __bool__(self):
         return bool(self.xs)
 
+class List(tuple):
+    __slots__ = ()
 
-Nil  = None
-Cons = NamedTuple('Cons', [('car', Any), ('cdr', 'Cons')])
+    def empty(self): return True
 
+Nil = List()
 
-def as_iter(cons):
-    while cons is not Nil:
-        yield cons.car
-        cons = cons.cdr
+class Cons(List):
+    __slots__  = ()
+    head, tail = (property(itemgetter(i)) for i in range(2))
+    __repr__   = __str__ = lambda self: 'List(%s)' % ', '.join(repr(x) for x in self)
 
+    def empty(self): return False
 
-def append(xs, ys): pass
+    def __new__(cls, head, tail): return tuple.__new__(cls, (head, tail))
 
+    def __iter__(self):
+        x = self
+        while x:
+            if isinstance(x, Cons):
+                yield x.head
+                x = x.tail
+            else:
+                yield x
+                return
 
-def clist(*xs):
+@dispatch(List, List)
+def append(xs, ys):
+    if not xs:
+        return ys
+    else:
+        return Cons(xs.head, append(xs.tail, ys))
+
+def clist(*xs) -> List:
     if not xs:
         return Nil
     else:
         x, *rest = xs
         return Cons(x, clist(*rest))
 
-
 def flip(f):
-    return lambda cdr, car: f(car, cdr)
+    return lambda tail, head: f(head, tail)
 
-
-def creverse(cons: Cons) -> Cons:
-    return reduce(flip(Cons), as_iter(cons), Nil)
-
+def creverse(cons: List) -> List:
+    return reduce(flip(Cons), iter(cons), Nil)
 
 class Queue(object):
     """A simple queue class. Usage:
@@ -411,8 +427,7 @@ class Queue(object):
         return self._check() is not Nil
 
     def __iter__(self):
-        return chain(as_iter(self.front), as_iter(creverse(self.rear)))
-
+        return chain(iter(self.front), iter(creverse(self.rear)))
 
 def graph_iterator(expand, state, frontier):
     def traverse():
@@ -426,7 +441,6 @@ def graph_iterator(expand, state, frontier):
     explored = set()
     return traverse
 
-
 @curry
 def dfs_iterator(visited, expand, state, initial):
     def traverse(node):
@@ -437,7 +451,6 @@ def dfs_iterator(visited, expand, state, initial):
         yield node
 
     return traverse(initial)
-
 
 @curry
 def take(n, it):
@@ -454,7 +467,6 @@ def take(n, it):
     ValueError: Stop argument for islice() must be None or an integer: 0 <= x <= sys.maxsize.
     """
     return islice(it, 0, n)
-
 
 @curry
 def drop(n, it):
@@ -474,33 +486,39 @@ def drop(n, it):
     """
     return islice(it, n, None)
 
-
-def delay(expr):
+def delay(f, *args):
     cache = [None]
 
     def get():
-        if cache[0] is None: cache[0] = expr
+        if cache[0] is None: cache[0] = f(*args)
         return cache[0]
     return get
 
-
 def force(delayed_expr):
     return delayed_expr()
-
 
 def invert(pairs):
     inv = defaultdict(list)
     for k, v in pairs: inv[v].append(k)
     return inv
 
+@dispatch(Hashable)
+def as_hashable(h):
+    return h
 
+@dispatch(dict)
+def as_hashable(d):
+    return tuple(d.items())
+
+@dispatch(Sequence)
 def unique(xs):
     marked = set()
     ys = []
-    for x in xs:
-        if x not in marked:
+    hs = map(as_hashable, xs)
+    for x, h in zip(xs, hs):
+        if h not in marked:
             ys.append(x)
-            marked.add(x)
+            marked.add(h)
     return ys
 
 
@@ -516,6 +534,11 @@ def cata(f, tree):
 
 
 def juxt(*fs):
+    """Juxtapose a variable number of function. Returns a function that applies
+    the `fs` to a (possibly variable) list of arguments. Usage:
+    >>> juxt(lambda x: x + 1, lambda x: x + 2)(1)
+    [2, 3]
+    """
     if not fs:
         return lambda *xs: []
     else:
@@ -538,6 +561,129 @@ def compose(*fs):
     else:
         f, *rest = fs
         return lambda x: f(compose(*rest)(x))
+
+
+def ident(x):
+    """The identity function that sends x in itself."""
+    return x
+
+
+@curry
+def groupby(key, it):
+    return itertools.groupby(sorted(it, key=key), key=key)
+
+
+@curry
+def groupwise(n, it):
+    """Returns windows of n elements. Usage:
+    >>> list(groupwise(2, range(5)))
+    [(0, 1), (1, 2), (2, 3), (3, 4)]
+    >>> list(groupwise(-1, range(5)))
+    Traceback (most recent call last):
+    ...
+    ValueError: n must be nonnegative, not -1
+    """
+    if n < 0:
+        raise ValueError('n must be nonnegative, not %d' % n)
+    its = itertools.tee(it, n)
+    return zip(*[drop(k, i) for k, i in enumerate(its)])
+
+
+@curry
+def reduceby(key, zero, step, it):
+    keyed_groups = groupby(key, it)
+    reducer      = lambda seq: reduce(step, seq, zero)
+    return ((k, reducer(g)) for k, g in keyed_groups)
+
+
+@curry
+def remove(p, it):
+    """Remove all items `i` such that `p(i) == True`
+    or elements that evaluate to `True` if `p` is `None`.
+    """
+    _p = p or (lambda x: not x)
+    return [i for i in it if not _p(i)]
+
+
+def grouperby(key):
+    return lambda it: groupby(key, it)
+
+
+def reducerby(key, zero, step):
+    return lambda it: reduceby(key, zero, step, it)
+
+
+def pipe(*reducers):
+    return lambda it: compose(reducers)(it)
+
+
+# TODO: make this work. Do I need it though? Perhaps not.
+class Nest:
+    def __init__(self, key=__unset__, f=__unset__):
+        self.key, self.f = key, f
+
+    def key(self, f):
+        return self
+
+    def map(self, f):
+        return self
+
+    def fold(self, zero, step):
+        return self
+
+    def __call__(self, xs):
+        return xs
+
+
+A, B = map(TypeVar, ['A', 'B'])
+
+def mergewith(binop, m1: Mapping[A, B], m2: Mapping[A, B]) -> Mapping[A, B]:
+    # print(m1, m2)
+    k1, k2 = set(m1.keys()), set(m2.keys())
+    # print(k1, k2)
+    common = k1 & k2
+    return dict(chain(((k, binop(m1[k], m2[k])) for k in common),
+                      ((k, m1[k]) for k in k1 - k2),
+                      ((k, m2[k]) for k in k2 - k1)))
+
+
+def merge(m: Dict, items: TList[Tuple[str, Any]]) -> Dict:
+    """Safely merge `items` into mapping `m`, destructively.
+    Raises exception if key is shared among `items`.
+    """
+    for k, v in items:
+        if k in m and m[k] != v:
+            raise ValueError('Item (%s -> %s) already in dictionary %s (%s)' % (k, v, m, items))
+        else:
+            m[k] = v
+
+    return m
+
+
+def isnan(x):
+    try:              return math.isnan(x)
+    except TypeError: return False
+
+
+class frozendict(dict):
+    def _blocked_attribute(obj):
+        raise AttributeError('A frozendict cannot be modified.')
+
+    _blocked_attribute = property(_blocked_attribute)
+
+    __delitem__ = __setitem__ = clear = pop = popitem = setdefault = update = _blocked_attribute
+
+    def __new__(cls, *args):
+        new = dict.__new__(cls)
+        super().__init__(new, *args)
+        new._cached_hash = hash(tuple(new.items()))
+        return new
+
+    def __hash__(self):
+        return self._cached_hash
+
+    def __repr__(self):
+        return f'frozendict({dict.__repr__(self)})'
 
 
 if __name__ == "__main__":

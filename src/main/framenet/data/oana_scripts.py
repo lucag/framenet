@@ -104,39 +104,49 @@ for frame in fn.frames:
 
 # DEMO: FE Relations
 
-final = []
-for frame in fn.frames:
-    for fe in frame.fe_relations:
-        if fe.name in ['Inheritance', 'Perspective_on']:
-            final.append([frame.name, fe.superFrame, fe.fe1, fe.name, fe.fe2, fe.subFrame])
+from framenet.builder import build
+
+
+def main():
+    fn, _ = build()
+
+    final = []
+    for frame in fn.frames:
+        for fe in frame.fe_relations:
+            if fe.name in ['Inheritance', 'Perspective_on']:
+                final.append([frame.name, fe.superFrame, fe.fe1, fe.name, fe.fe2, fe.subFrame])
 
 
 
-            # DEMO: Writing to CSV file
-            # resultFile = open("output.csv", "w")
-            # wr = csv.writer(resultFile, dialect="excel")
-            # wr.writerows(final)
+                # DEMO: Writing to CSV file
+                # resultFile = open("output.csv", "w")
+                # wr = csv.writer(resultFile, dialect="excel")
+                # wr.writerows(final)
 
 
-            # DEMO: SCHEMAS
-            # schemas = utils.generate_schemas_for_frames(fn.frames)
-            # Write these to a file
+                # DEMO: SCHEMAS
+                # schemas = utils.generate_schemas_for_frames(fn.frames)
+                # Write these to a file
 
 
-            # DEMO: CONSTRUCTIONS
-            # total = build_cxns_for_frame("Motion", fn, fnb, "Manner", "V")
+                # DEMO: CONSTRUCTIONS
+                # total = build_cxns_for_frame("Motion", fn, fnb, "Manner", "V")
 
-            # You can then write the values from the total dictionary into files:
-            # * cxns_all: all valences converted 1-1 to cxns
-            # * cxns_collapsed: valences collapsed into smaller set
-            # * tokens: tokens created from these frames ("swarm.v", etc.)
-            # * types: type-cxns ("Fluidic_motionType") created from these frames
-            # * pp: PP constructions that are specific to the frame (e.g., Instrument-PP)
-            # * prep_types: General prepositional type constructions used for frame (E.g., "Instrument-Prep")
-            # * prepositions: Preposition constructions that are used for that frame (E.g. "With-Preposition"[subcase of Instrument-Prep])
-            # NOTE: The last three (pp, prep_types, and prepositions) are necessary for the collapsed cxns, since this filters by PP-type,
-            # and collapses two valence units if they are PPs mapping onto the same FE.
+                # You can then write the values from the total dictionary into files:
+                # * cxns_all: all valences converted 1-1 to cxns
+                # * cxns_collapsed: valences collapsed into smaller set
+                # * tokens: tokens created from these frames ("swarm.v", etc.)
+                # * types: type-cxns ("Fluidic_motionType") created from these frames
+                # * pp: PP constructions that are specific to the frame (e.g., Instrument-PP)
+                # * prep_types: General prepositional type constructions used for frame (E.g., "Instrument-Prep")
+                # * prepositions: Preposition constructions that are used for that frame (E.g. "With-Preposition"[subcase of Instrument-Prep])
+                # NOTE: The last three (pp, prep_types, and prepositions) are necessary for the collapsed cxns, since this filters by PP-type,
+                # and collapses two valence units if they are PPs mapping onto the same FE.
 
 
-            # DEMO: PREPOSITION CONSTRUCTIONS (distinct from build_cxns_for_frame, above)
-            # prepositions = utils.build_prepositions(fn)
+                # DEMO: PREPOSITION CONSTRUCTIONS (distinct from build_cxns_for_frame, above)
+                # prepositions = utils.build_prepositions(fn)
+
+
+if __name__ == '__main__':
+    main()

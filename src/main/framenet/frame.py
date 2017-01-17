@@ -5,10 +5,14 @@ This module defines the Frame object, as well as the associated SemType class, F
 Other associated Frame classes are defined in frame_relation and lexical_units.
 """
 
+# @formatter:off
 import xml.etree.ElementTree as et
 
+from collections            import defaultdict
 from framenet.lexical_unit  import ShallowLU
+from framenet.util          import iget
 from pprint                 import pformat
+# @formatter:on
 
 
 class Node(object):
@@ -45,6 +49,7 @@ class Frame(Node):
         self.group_realizations = []
         self.fe_realizations = []
         self.annotations = []
+        self.annotation_id_to_lu = None
 
     def is_related(self, frame):
         """ Checks if a string 'frame' is related to SELF. """
@@ -66,6 +71,13 @@ class Frame(Node):
     def add_annotations(self, anns):
         self.annotations += anns
 
+    # @property
+    # def annotations(self):
+    #     if not self.annotations:
+    #         fn, fnb = build()
+    #         fnb.build_lus_for_frame(fn, self.name)
+    #     return self._annotations
+
     def compatible_elements(self, e1, e2):
         return (e1.name not in e2.excludes) and (e2.name not in e1.excludes) and (e1.name != e2.name)
 
@@ -76,6 +88,16 @@ class Frame(Node):
 
     def get_parents(self, fn):
         return (fn.get_frame(p) for p in self.parents)
+
+    def get_lu_for(self, annotation_id):
+        if not self.annotations:
+            raise ValueError('Annotations not present. Please run build_lus_for_frame.')
+
+        if not self.annotation_id_to_lu:
+            self.annotation_id_to_lu = {
+                k: v for k, v in map(iget('ID', 'lu'), self.annotations)
+            }
+        return self.annotation_id_to_lu[annotation_id]
 
     def get_lu(self, lu_name):
         for lu in self.lexicalUnits:

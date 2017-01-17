@@ -155,7 +155,8 @@ class FrameNet(object):
         """ Returns frame from name, e.g. "Motion". """
         if name in self.name_to_frames:
             return self.name_to_frames[name]
-            # raise Exception("Frame {} does not exist.".format(name))
+        else:
+            raise Exception(f"Frame {name} does not exist. Did you misspell it?")
 
     def get_frame_from_id(self, ID):
         """ returns frame from ID. """

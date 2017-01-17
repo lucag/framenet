@@ -6,8 +6,7 @@ are for the sake of compatibility, others for practicality.
 ## Renamed folders/packages
 
 * The root folder `src` became `framenet`.
-* Added a package `ecg` containing all the related API, with file names
-   shortedned.
+* Added a package `ecg` containing all the related API, with file names shortedned.
 * All package names are singular.
 * Added a package `examples` to gather all the miscellaeous "stuff".
 

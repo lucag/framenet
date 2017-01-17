@@ -7,23 +7,26 @@ Constructs a "FrameNet" object, and builds frame element relations.
 
 from __future__ import print_function
 
-import sys, xml.etree.ElementTree as et
+import sys, typing, xml.etree.ElementTree as et
 
 from os                     import listdir, getenv, access, R_OK
 from os.path                import join
-
+from typing                 import Tuple
 from framenet.annotation    import Annotation
 from framenet.framenet      import FrameNet
-from framenet.frame         import FrameBuilder, FrameElementRelation
+from framenet.frame         import FrameBuilder, FrameElementRelation, Frame
 from framenet.lexical_unit  import LexicalUnit, FERealization, FEGroupRealization, ValencePattern, Valence
 
 # formatter:off
+from framenet.util import memoize
+
 URI     = "{http://framenet.icsi.berkeley.edu}"
 FN_HOME = getenv('FN_HOME', '/opt/var/data/fndata-1.6')
 
 
 # formatter:on
-def build(data_path=FN_HOME):
+@memoize
+def build(data_path=FN_HOME) -> Tuple[FrameNet, 'FramenetBuilder']:
     if not access(data_path, R_OK):
         print('FrameNet data not found. Please set FN_HOME and retry.', file=sys.stderr)
         return None, None

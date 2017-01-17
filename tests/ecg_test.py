@@ -1,6 +1,8 @@
 # import pytest
 import framenet.ecg as ecg
+from framenet.data.annotation import Graph, Pattern, annoset_for, get_frame_df, cols, Link, Node
 from framenet.ecg.generation import TestTree, unstack
+from framenet.util import cata
 
 
 def test_type():
@@ -24,7 +26,7 @@ def test_type():
 
     d_as = list(ecg.ancestors(d))
     bs   = [t in d_as for t in (a, b1, c, d)]
-    assert all(bs), 'ancerstors: %s' % d_as
+    assert all(bs), 'ancestors: %s' % d_as
 
 
 def test_unstack():
@@ -51,3 +53,63 @@ def test_unstack():
     rs = unstack(1, tree)
     assert len(rs) == 10
     assert len(rs[0]) == 5
+
+
+def test_pattern1():
+    vertices = ext, target, obj, dep = ['Ext', 'Target', 'Obj', 'Dep']
+    edges    = ((ext, [target]),
+                (target, [obj]),
+                (obj, [dep]),
+                (dep, [dep]))
+
+    g = Graph(vertices=vertices, edges=edges)
+    p = Pattern(g)
+
+    assert p.match(['Ext', 'Target', 'Obj', 'Dep', 'Dep'])
+    assert p.match(['Ext', 'Target', 'Obj', 'Dep'])
+
+    assert not p.match(['Ext', 'Target', 'Obj', 'Obj', 'Dep'])
+    assert not p.match(['Target', 'Obj', 'Dep', 'Dep'])
+
+
+def test_pattern2():
+    vertices = ext, t, dep = ('Ext', 'Target', 'Dep')
+    ext_dep = Pattern(Graph(vertices=vertices, edges=((ext, [t]), (t, [dep]), (dep, [dep]))))
+
+    assert ext_dep.match(['Ext', 'Target', 'Dep', 'Dep'])
+
+
+def test_pattern3():
+    vertices = ext, t, dep = ('Ext', 'Target', 'Dep')
+    ext_dep = Pattern(Graph(vertices=vertices, edges=((ext, [t]), (t, [dep]), (dep, [dep, None]), (None, [None]))))
+
+    assert ext_dep.match(['Ext', 'Target', 'Dep', 'Dep', 'Dep', None])
+
+
+def test_annoset_for():
+    cm_aset = annoset_for('Cause_motion')
+    assert len(cm_aset) == 823
+
+
+def test_get_frame_df(frame_name='Cause_motion', count=10788):
+    cm_df = get_frame_df(frame_name)
+    assert len(cm_df) == 10788, 'Test falied: %d' % len(cm_df)
+
+
+def test_cols():
+    assert cols(Link(Node('id',  'fe',  'gf',  True ),
+                     Node('id2', 'fe2', 'gf2', False))) == [
+        'source_id', 'source_FE', 'source_GF', 'source_core',
+        'target_id', 'target_FE', 'target_GF', 'target_core'
+    ]
+
+
+def test_cata():
+    TT = TestTree
+    t  = TT(1, [TT(2), TT(3)])
+
+    def f(items, children):
+        return TestTree(items + 1, children)
+
+    assert len(list(cata(f, t).children())) == 2
+
