@@ -26,20 +26,20 @@ def make_table_from_counts(cs, style):
     return table(header + '\n'.join(map(tr, rows)))
 
 
-align_r = 'text-align: right;'
+align_r = 'text-align: right'
 
 def make_table_with_sentences(pattern_and_ss, style=align_r, collapse_sentences=False):
     """Table from (`pattern`, `sentence list`) pairs."""
     if not collapse_sentences:
         rows = ['\n'.join((td(i + 1,   style=style),
                        td(len(ss), style=style),
-                       td(' \u2192 '.join(pattern), style='vertical-align: top; white-space: nowrap;'),
-                       td(ul(''.join(li(s) for s in ss)), style='text-align: left;')))
+                       td(' \u2192 '.join(pattern), style='vertical-align: top ; white-space: nowrap'),
+                       td(ul(''.join(li(s) for s in ss)), style='text-align: left')))
             for i, (pattern, ss) in enumerate(pattern_and_ss)]
     else:
         rows = ['\n'.join((td(i + 1,   style=style),
                        td(len(ss), style=style),
-                       td(' \u2192 '.join(pattern), style='vertical-align: top; white-space: nowrap;'),
+                       td(' \u2192 '.join(pattern), style='vertical-align: top ; white-space: nowrap'),
                        # td(ul(''.join(li(s) for s in ss)), style='text-align: left;')
                            ))
             for i, (pattern, ss) in enumerate(pattern_and_ss)]

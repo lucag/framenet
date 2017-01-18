@@ -1,6 +1,6 @@
 require.config({
   paths: {
-    "d3": 'http://d3js.org/d3.v3.min'
+    "d3": "http://d3js.org/d3.v3.min"
   }
 });
 
@@ -12,7 +12,23 @@ require(['d3', 'jquery'], function (d3, $) {
   !function (csv, container, css) {
     'use strict';
 
-    var sankey = d3.sankey();
+    function uniqueID() {
+      function chr4() {
+        return Math.random().toString(16).slice(-4);
+      }
+
+      function chr9() {
+        return Math.random().toString(36).substr(2, 9);
+      }
+
+      return '_' + chr9();
+    }
+
+    var id = uniqueID();
+
+    console.log('id', id);
+
+    var div = $('<div id="' + id + '"></div>').appendTo(container);
 
     var units = "Annotation";
 
@@ -27,10 +43,10 @@ require(['d3', 'jquery'], function (d3, $) {
         color        = d3.scale.category20();
 
     // console.log('adding svg elt.');
-    $('<style>' + css + '</style>').appendTo(element[0]);
+    $('<style>' + css + '</style>').appendTo(div);
 
     // append the svg canvas to the page
-    var svg = d3.select(container).append("svg")
+    var svg = d3.select('#' + id).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -45,8 +61,8 @@ require(['d3', 'jquery'], function (d3, $) {
 
     var path = sankey.link();
 
-    var Node = function (id, fe, gf) {
-      return {name: id, FE: fe, GF: gf};
+    var Node = function(id, fe, gf, core) {
+      return { name: id, FE: fe, GF: gf, core: core === "True" };
     };
 
     var eq = function (n1, n2) { return n1.name === n2.name; };
@@ -58,8 +74,8 @@ require(['d3', 'jquery'], function (d3, $) {
     var graph = {"nodes": [], "links": []};
 
     graph.nodes = d3.merge(data.map(function (d) {
-        return [Node(d.source_id, d.source_FE, d.source_GF),
-                Node(d.target_id, d.target_FE, d.target_GF)];
+        return [Node(d.source_id, d.source_FE, d.source_GF, d.source_core),
+                Node(d.target_id, d.target_FE, d.target_GF, d.target_core)];
       }))
       .sort(function (n1, n2) { return d3.ascending(n1.name, n2.name); })
       .reduceRight(function (ns, n) {
@@ -104,8 +120,8 @@ require(['d3', 'jquery'], function (d3, $) {
       .text(function (d) {
         var s = d.source,
             t = d.target;
-        return s.GF + ": " + s.FE + " ⟶ "
-               + t.GF + ": " + t.FE + "\n"
+        return  s.GF  + ": " + s.FE + " (core: " + s.core + ") ⟶ "
+              + t.GF  + ": " + t.FE + " (core: " + t.core + ")\n"
                + format(d.value);
       });
 
@@ -127,7 +143,7 @@ require(['d3', 'jquery'], function (d3, $) {
       .style("fill", function (d) { return d.color = color(d.name.replace(/ .*/, "")); })
       .style("stroke", function (d) { return d3.rgb(d.color).darker(2); })
       .append("title")
-      .text(function (d) { return d.GF + ': ' + d.FE + "\n" + format(d.value); });
+      .text(function(d) { return d.GF + ': ' + d.FE + " (core: " + d.core + ")\n" + format(d.value); });
 
     // add in the title for the nodes
     node.append("text")

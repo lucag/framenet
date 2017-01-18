@@ -563,7 +563,7 @@ def compose(*fs):
         return lambda x: f(compose(*rest)(x))
 
 
-def ident(x):
+def identity(x):
     """The identity function that sends x in itself."""
     return x
 

@@ -1,4 +1,4 @@
-import gzip, os
+import gzip, os, re
 
 import operator              as op
 import xml.etree.ElementTree as et
@@ -23,7 +23,7 @@ from framenet.builder        import build
 from framenet.ecg.generation import unstack_all, root_for, base_for, FN
 from framenet.util           import (flatmap, iget, curry, memoize,
                                      groupby, aget, reduceby, isnan,
-                                     groupwise, singleton, flatten, merge, compose)
+                                     groupwise, singleton, flatten, merge, compose, identity)
 
 
 # TODO: this is a duplicate 1
@@ -284,18 +284,39 @@ fields      = iget('layer.name', 'label.name', 'label.itype', 'label.coreFE', de
 fe_gf       = iget('FE', 'GF', 'core', default=None)
 
 Node        = namedtuple('Node', 'id FE GF core')
+Node2       = namedtuple('Node', 'id FE GF core text')
 Link        = namedtuple('Link', 'source target')
 
 def to_node(group):
     """Make a single node"""
 
     ls     = to_layers(group)
-    fe_gfs = [fe_gf(l) for l in ls if fe_gf(l)[0]]
+    # pprint(ls)
+    fe_gfs = [fe_gf(l) for l in ls if fe_gf(l)[0] and fe_gf(l)[1]]
+    # print('-' * 72)
+    # pprint(fe_gfs)
     try:
-        return [Node('%d:%s' % (i, fe)
+        return [Node('%d:%s:%s' % (i, fe, gf)
                      , str(fe)
                      , str(gf)
-                     , core)
+                     , bool(core)
+                     )
+                for i, (fe, gf, core) in enumerate(fe_gfs)]
+    except ValueError:
+        pprint(fe_gfs)
+        pprint(ls)
+        raise
+
+
+def to_json_node(group):
+    ls     = to_layers(group)
+    fe_gfs = [fe_gf(l) for l in ls if fe_gf(l)[0]]
+    try:
+        return [{'id': '%d:%s' % (i, fe),
+                 'FE': str(fe),
+                 'GF': str(gf),
+                 'core': bool(core),
+                 'text': text(group)}
                 for i, (fe, gf, core) in enumerate(fe_gfs)]
     except ValueError:
         pprint(fe_gfs)
@@ -309,6 +330,19 @@ def cols(link: Link) -> List[str]:
             for k in n._asdict().keys()]
 
 
+@curry
+def links(noncore, from_nodes):
+    """Generate links between pairs of nodes, removing _NI GFs."""
+
+    if noncore or all(n.core for n in from_nodes):
+        return [Link(s, t) for s, t in groupwise(2, from_nodes)
+                # if not re.match('.NI', s.GF) and not re.match('.NI', t.GF)
+                # if s.GF and t.GF
+                ]
+    else:
+        return []
+
+
 def write_records(sout, groups, noncore=False):
 
     def to_csv(link_and_count):
@@ -317,18 +351,10 @@ def write_records(sout, groups, noncore=False):
                 link.target.id, link.target.FE, link.target.GF, link.target.core,
                 cnt)
 
-    def links(from_nodes):
-        #         pprint(nodes)
-        if noncore or all(n.core for n in from_nodes):
-            return [Link(*pair) for pair in groupwise(2, from_nodes)]
-        else:
-            return []
-
     i               = 0
-    ident           = lambda x: x
     count           = lambda ys, _: ys + 1
-    nodes           = map(to_node, groups)
-    link_and_counts = list(reduceby(ident, 0, count, flatmap(links, nodes)))
+    nodes           = [to_node(g) for g in groups]
+    link_and_counts = list(reduceby(identity, 0, count, flatmap(links(noncore), nodes)))
     # pprint(link_and_counts)
     for i, lc in enumerate(link_and_counts):
         if i == 0:
@@ -337,6 +363,38 @@ def write_records(sout, groups, noncore=False):
         print(','.join(str(lc) for lc in to_csv(lc)), file=sout)
 
     print('Written %d records.' % i)
+
+
+def unique(it, key=None):
+    """Unique elements in it according to key. Typical usage:
+    >>> unique((1, 2, 3, 4), key = lambda x: x)
+    [1, 2, 3, 4]
+    >>> unique((1, 2, 3, 4), key = lambda x: x % 2)
+    [1, 2]
+    """
+    def step(ys, x):
+        xs, ks = ys
+        k = key(x)
+        if k in ks:
+            return xs, ks
+        else:
+            return xs + [x], ks | {k}
+
+    key = key or identity
+
+    return reduce(step, it, ([], set()))[0]
+
+
+def to_json(groups, noncore=False):
+    count           = lambda ys, _: ys + 1
+    nodes           = [to_node(g) for g in groups]
+    link_and_counts = list(reduceby(identity, 0, count, flatmap(links(noncore), nodes)))
+    json_nodes      = unique(flatten(nodes))
+    json_links      = [{'source': json_nodes.index(l.source)
+                        , 'target': json_nodes.index(l.target)
+                        , 'value': c }
+                       for l, c in link_and_counts]
+    return {'nodes': [dict(n._asdict()) for n in json_nodes], 'links': json_links}
 
 
 def write_csv(fname, groups, noncore=False, base='.'):
@@ -390,6 +448,10 @@ class Groups:
         self.groups     = make_groups(self.data_frame.to_dict(orient='records'))
 
 
+def text(group):
+    return group[0][0]['text.contents']
+
+
 class Patterns:
     """Patterns for a group record."""
 
@@ -404,14 +466,13 @@ class Patterns:
         gs = [g for g in self.groups if matches(to_layers(g))]
         return Patterns(gs)
 
-    def diagram(self, noncore='True'):
+    def diagram(self, noncore=True):
         with StringIO() as sout:
             write_records(sout, self.groups, noncore)
             return flowdiagram(sout.getvalue())
 
     def display(self, pattern_matcher=None, negative=False, min_count=0, collapse_sentences=False):
-        def text(group):
-            return group[0][0]['text.contents']
+        """Display patterns and (optionally) sentences in an HTML table."""
 
         res   = (lambda b: not b) if negative and pattern_matcher else (lambda b: b)
         pred  = (lambda _: res(True)) if not pattern_matcher else compose(res, match(pattern_matcher))
