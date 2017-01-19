@@ -68,7 +68,7 @@ require(['d3', 'jquery'], function (d3, $) {
     var eq = function (n1, n2) { return n1.name === n2.name; };
 
     // load the data (using the timely portfolio csv method)
-    var data = d3.csv.parse(csv);
+    var data = d3.tsv.parse(csv);
 
     //set up graph in same style as original example but empty
     var graph = {"nodes": [], "links": []};

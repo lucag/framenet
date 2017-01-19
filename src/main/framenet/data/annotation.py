@@ -344,7 +344,7 @@ def write_records(sout, groups, noncore=False, sep='\t'):
         return  ( link.source.id, link.source.FE, link.source.GF, link.source.core
                 , link.target.id, link.target.FE, link.target.GF, link.target.core
                 , cnt
-                , sentence
+                # , sentence
                 )
 
     i            = 0
@@ -356,7 +356,8 @@ def write_records(sout, groups, noncore=False, sep='\t'):
     for i, (lc, txt) in enumerate(lnk_cnt_txt):
         if i == 0:
             # prepend header
-            print(sjoin(cols(lc[0]) + ['count', 'text']), file=sout)
+            # print(sjoin(cols(lc[0]) + ['count', 'text']), file=sout)
+            print(sjoin(cols(lc[0]) + ['count']), file=sout)
         print(sjoin(str(lc) for lc in to_rec(lc, txt)), file=sout)
 
     print('Written %d records.' % i)
