@@ -14,7 +14,7 @@ def tag(elem):
             return '<{0}>{1}</{0}>'.format(elem, str(t))
     return e
 
-table, tr, td, th, b, ul, li = map(tag, 'table tr td th b ul li'.split())
+table, tr, td, th, b, ul, li, div = map(tag, 'table tr td th b ul li div'.split())
 
 
 def make_table_from_counts(cs, style):
@@ -48,7 +48,7 @@ data_template = dedent("""
         <div class="popover-content">
     </div>""")
 
-def make_table_with_sentences(pattern_and_ss, style=align_r):
+def make_table_with_sentences(pattern_and_ss, total_count, style=align_r):
     """Table from (`pattern`, `sentence list`) pairs."""
 
     def button(ss):
@@ -62,5 +62,7 @@ def make_table_with_sentences(pattern_and_ss, style=align_r):
                          td(' \u2192 '.join(pattern), style='vertical-align: top ; white-space: nowrap'),
                          td(button(ss))))
               for i, (pattern, ss) in enumerate(pattern_and_ss)]
-    return activate_popover.render() + table(header + '\n'.join(tr(r) for r in rows))
+    return (activate_popover.render()
+            + div(f'Total count: {total_count}')
+            + table(header + '\n'.join(tr(r) for r in rows)))
 

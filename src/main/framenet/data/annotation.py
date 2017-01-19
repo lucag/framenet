@@ -483,10 +483,12 @@ class Patterns:
         p_to_ss  = defaultdict(list)
         for i, (k, v) in enumerate(gts): p_to_ss[k].append(v)
 
+        total_count = sum(len(ss) for ss in p_to_ss.values())
+
         p_ss = [(p, ss) for p, ss in sorted(list(p_to_ss.items()), key=lambda p: len(p[1]), reverse=True)
                 if len(ss) > min_count]
 
-        return HTML(make_table_with_sentences(p_ss))
+        return HTML(make_table_with_sentences(p_ss, total_count))
 
 
 if __name__ == '__main__':
