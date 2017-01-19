@@ -2,8 +2,6 @@ import gzip, os, re
 
 import operator              as op
 import xml.etree.ElementTree as et
-
-import math
 import pandas                as pd
 
 from io                      import StringIO
@@ -17,7 +15,6 @@ from typing                  import NamedTuple, List, Tuple, Set, Mapping, Dict,
 from framenet.ui.flowdiagram import flowdiagram
 from framenet.ui.html        import b, make_table_with_sentences
 from IPython.display         import HTML
-from multipledispatch        import dispatch
 from functools               import reduce
 from framenet.builder        import build
 from framenet.ecg.generation import unstack_all, root_for, base_for, FN
@@ -335,32 +332,32 @@ def links(noncore, from_nodes):
     """Generate links between pairs of nodes, removing _NI GFs."""
 
     if noncore or all(n.core for n in from_nodes):
-        return [Link(s, t) for s, t in groupwise(2, from_nodes)
-                # if not re.match('.NI', s.GF) and not re.match('.NI', t.GF)
-                # if s.GF and t.GF
-                ]
+        return [Link(s, t) for s, t in groupwise(2, from_nodes)]
     else:
         return []
 
 
-def write_records(sout, groups, noncore=False):
+def write_records(sout, groups, noncore=False, sep='\t'):
 
-    def to_csv(link_and_count):
+    def to_rec(link_and_count, sentence):
         link, cnt = link_and_count
-        return (link.source.id, link.source.FE, link.source.GF, link.source.core,
-                link.target.id, link.target.FE, link.target.GF, link.target.core,
-                cnt)
+        return  ( link.source.id, link.source.FE, link.source.GF, link.source.core
+                , link.target.id, link.target.FE, link.target.GF, link.target.core
+                , cnt
+                , sentence
+                )
 
-    i               = 0
-    count           = lambda ys, _: ys + 1
-    nodes           = [to_node(g) for g in groups]
-    link_and_counts = list(reduceby(identity, 0, count, flatmap(links(noncore), nodes)))
+    i            = 0
+    count        = lambda ys, _: ys + 1
+    nodes, sents = [to_node(g) for g in groups], [text(g) for g in groups]
+    lnk_cnt_txt  = zip(reduceby(identity, 0, count, flatmap(links(noncore), nodes)), sents)
     # pprint(link_and_counts)
-    for i, lc in enumerate(link_and_counts):
+    sjoin = sep.join
+    for i, (lc, txt) in enumerate(lnk_cnt_txt):
         if i == 0:
-            # write header
-            print(','.join(cols(lc[0]) + ['count']), file=sout)
-        print(','.join(str(lc) for lc in to_csv(lc)), file=sout)
+            # prepend header
+            print(sjoin(cols(lc[0]) + ['count', 'text']), file=sout)
+        print(sjoin(str(lc) for lc in to_rec(lc, txt)), file=sout)
 
     print('Written %d records.' % i)
 
@@ -370,8 +367,8 @@ def unique(it, key=None):
     >>> unique((1, 2, 3, 4), key = lambda x: x)
     [1, 2, 3, 4]
     >>> unique((1, 2, 3, 4), key = lambda x: x % 2)
-    [1, 2]
-    """
+    [1, 2]"""
+
     def step(ys, x):
         xs, ks = ys
         k = key(x)
@@ -397,10 +394,10 @@ def to_json(groups, noncore=False):
     return {'nodes': [dict(n._asdict()) for n in json_nodes], 'links': json_links}
 
 
-def write_csv(fname, groups, noncore=False, base='.'):
+def write_csv(fname, groups, noncore=False, base='.', sep='\t'):
     path = os.path.join(base, '%s.csv' % fname)
     with open(path, 'w+') as sout:
-        write_records(sout, groups, noncore)
+        write_records(sout, groups, noncore, sep)
 
 
 # Helpers for `Patterns`: should go somewhere else.
@@ -471,7 +468,7 @@ class Patterns:
             write_records(sout, self.groups, noncore)
             return flowdiagram(sout.getvalue())
 
-    def display(self, pattern_matcher=None, negative=False, min_count=0, collapse_sentences=False):
+    def display(self, pattern_matcher=None, negative=False, min_count=0):
         """Display patterns and (optionally) sentences in an HTML table."""
 
         res   = (lambda b: not b) if negative and pattern_matcher else (lambda b: b)
@@ -488,7 +485,7 @@ class Patterns:
         p_ss = [(p, ss) for p, ss in sorted(list(p_to_ss.items()), key=lambda p: len(p[1]), reverse=True)
                 if len(ss) > min_count]
 
-        return HTML(make_table_with_sentences(p_ss, collapse_sentences=collapse_sentences))
+        return HTML(make_table_with_sentences(p_ss))
 
 
 if __name__ == '__main__':
