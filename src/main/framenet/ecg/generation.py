@@ -456,13 +456,13 @@ def generate_cxns_for_lu(lu):
 
 
 def generate_cxns_from_patterns(patterns, collapsed=True):
-    returned = ""
+    returned = []
     i = 1
     for pattern in patterns:
         if collapsed:
-            returned += from_collapsed_pattern(pattern, i).format_to_cxn() + "\n\n"
+            returned.append(from_collapsed_pattern(pattern, i))
         else:
-            returned += from_pattern(pattern, i).format_to_cxn() + "\n\n"
+            returned.append(from_pattern(pattern, i))
         i += 1
     return returned
 

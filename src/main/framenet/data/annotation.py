@@ -459,9 +459,9 @@ class Patterns:
         else:
             self.groups = groups
 
-    def select(self, pattern_matcher):
-        matches = match(pattern_matcher)
-        gs = [g for g in self.groups if matches(to_layers(g))]
+    def select(self, pattern_matcher, negative=False):
+        matches = match(pattern_matcher) if not negative else compose(lambda b: not b, match(pattern_matcher))
+        gs      = [g for g in self.groups if matches(to_layers(g))]
         return Patterns(gs)
 
     def diagram(self, noncore=True):

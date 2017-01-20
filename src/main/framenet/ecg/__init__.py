@@ -2,6 +2,7 @@
 
 Question: What to do with subcase of Transitive_action, etc.?
 """
+
 from typing import Iterable, List
 
 from framenet.builder import build
