@@ -9,7 +9,7 @@ require(['d3', 'jquery'], function (d3, $) {
 
   console.log('defining function');
 
-  !function (csv, container, css) {
+  !function (csv, container, css, w, h) {
     'use strict';
 
     function uniqueID() {
@@ -33,8 +33,8 @@ require(['d3', 'jquery'], function (d3, $) {
     var units = "Annotation";
 
     var margin = {top: 10, right: 10, bottom: 10, left: 10},
-        width  = 800 - margin.left - margin.right,
-        height = 600 - margin.top - margin.bottom;
+        width  = w - margin.left - margin.right,
+        height = h - margin.top - margin.bottom;
 
     var formatNumber = d3.format(",.0f"),    // zero decimal places
         format       = function (d) {

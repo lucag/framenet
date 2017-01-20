@@ -464,10 +464,11 @@ class Patterns:
         gs      = [g for g in self.groups if matches(to_layers(g))]
         return Patterns(gs)
 
-    def diagram(self, noncore=True):
+    def diagram(self, noncore=True, size=(800, 600)):
+        w, h = size
         with StringIO() as sout:
             write_records(sout, self.groups, noncore)
-            return flowdiagram(sout.getvalue())
+            return flowdiagram(sout.getvalue(), w, h)
 
     def display(self, pattern_matcher=None, negative=False, min_count=0):
         """Display patterns and (optionally) sentences in an HTML table."""

@@ -13,10 +13,13 @@ env = Environment (
 flow2_js    = env.get_template('flow2.js')
 css_templ   = env.get_template('main.css')
 
-def flowdiagram(data):
-    rendered = flow2_js.render(arguments='"%s", element[0], "%s"' % (
-        data.replace('\n', '\\n').replace('\t', '\\t'),
-        css_templ.render().replace('\n', '\\n').replace('\t', '\\t')))
+def flowdiagram(data, width=800, height=600):
+    rendered = flow2_js.render(arguments='"%s", element[0], "%s", %d, %d' % (
+        data.replace('\n', '\\n').replace('\t', '\\t').replace('"', '\\"').replace("'", "\\'"),
+        css_templ.render().replace('\n', '\\n').replace('\t', '\\t').replace('"', '\\"').replace("'", "\\'"),
+        width,
+        height
+    ))
     # print(rendered)
     # return rendered
     return Javascript(data=rendered)
