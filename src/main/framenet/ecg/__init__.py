@@ -2,13 +2,14 @@
 
 Question: What to do with subcase of Transitive_action, etc.?
 """
-from typing import List, Iterable, Tuple, Any
+from typing import Iterable, List
 
+from framenet.builder import build
 from framenet.util import singleton
 
 
 class Construction(object):
-    def __init__(self, frame, parent, n):
+    def __init__(self, frame, parent='ArgumentStructure', n=1):
         self.frame = frame
         self.parent = parent
         self.constituents = []

@@ -470,10 +470,10 @@ def generate_cxns_from_patterns(patterns, collapsed=True):
 def generate_preps_from_types(types, fn):
     returned = ""
     preps = sorted([lu for lu in fn.lexemes_to_frames.keys() if lu.split(".")[1] == "prep"])
-    for k, v in types.value():
+    for k, v in types.items():
         meaning = None
         supers = ["{}-Preposition".format(supertype) for supertype in v]
-        name = k.split("[")[1].replace("]", "")
+        name = k.split("[")[1].replace("]", "") if '[' in k else k
         lu = "{}.prep".format(name)
         parents = ", ".join(supers)
         if lu in preps:
