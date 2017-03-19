@@ -93,7 +93,7 @@ def test_annoset_for():
 
 def test_get_frame_df(frame_name='Cause_motion', count=10788):
     cm_df = get_frame_df(frame_name)
-    assert len(cm_df) == 10788, 'Test falied: %d' % len(cm_df)
+    assert len(cm_df) == 10788, 'Test failed: %d' % len(cm_df)
 
 
 def test_cols():

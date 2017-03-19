@@ -450,27 +450,30 @@ def text(group):
     return group[0][0]['text.contents']
 
 
-class Patterns:
+@singleton
+class Frame:
     """Patterns for a group record."""
 
-    def __init__(self, groups):
-        if isinstance(groups, Groups):
-            self.groups = groups.groups
+    def __init__(self, name_or_groups):
+        if isinstance(name_or_groups, Groups):
+            self.groups = name_or_groups
+        elif isinstance(name_or_groups, str):
+            self.groups = Groups(name_or_groups)
         else:
-            self.groups = groups
+            raise TypeError('Frame reqires a Group or a str instance')
 
     def select(self, pattern_matcher, negative=False):
         matches = match(pattern_matcher) if not negative else compose(lambda b: not b, match(pattern_matcher))
-        gs      = [g for g in self.groups if matches(to_layers(g))]
-        return Patterns(gs)
+        gs      = [g for g in self.groups.groups if matches(to_layers(g))]
+        return Frame(gs)
 
     def diagram(self, noncore=True, size=(800, 600)):
         w, h = size
         with StringIO() as sout:
-            write_records(sout, self.groups, noncore)
+            write_records(sout, self.groups.groups, noncore)
             return flowdiagram(sout.getvalue(), w, h)
 
-    def display(self, pattern_matcher=None, negative=False, min_count=0):
+    def display(self, pattern_matcher=None, negative=False, min_count=0, include_sentences=True):
         """Display patterns and (optionally) sentences in an HTML table."""
 
         res   = (lambda b: not b) if negative and pattern_matcher else (lambda b: b)
@@ -479,7 +482,7 @@ class Patterns:
         # nodes = [to_node(g) for g in self.groups]
 
         gts   = [(tuple(gf_pt_or_(l) for l in to_layers(g)), text(g))
-                 for g in self.groups if pred(to_layers(g))]
+                 for g in self.groups.groups if pred(to_layers(g))]
 
         p_to_ss  = defaultdict(list)
         for i, (k, v) in enumerate(gts): p_to_ss[k].append(v)
@@ -489,7 +492,7 @@ class Patterns:
         p_ss = [(p, ss) for p, ss in sorted(list(p_to_ss.items()), key=lambda p: len(p[1]), reverse=True)
                 if len(ss) > min_count]
 
-        return HTML(make_table_with_sentences(p_ss, total_count))
+        return HTML(make_table_with_sentences(p_ss, total_count, include_sentences=include_sentences))
 
 
 if __name__ == '__main__':

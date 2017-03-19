@@ -23,7 +23,7 @@ from collections               import OrderedDict
 from glob                      import iglob
 from itertools                 import chain
 from os.path                   import join
-from typing                    import Generic, Iterator, List, TypeVar
+from typing                    import Generic, Iterator, List, TypeVar, Dict
 from framenet.data.scripts     import get_valence_patterns, invert_preps
 from framenet.ecg              import Constituent, Construction
 from framenet.lexical_unit     import ValencePattern
@@ -279,7 +279,7 @@ def unstack_all(elements):
 
 
 @memoize
-def _frame_element_relations(root):
+def _frame_element_relations(root: EtTree) -> List[Dict]:
     """Builds the entire table off of the root XML element."""
     rtypes  = it(root, 'frameRelationType')
     cap     = lambda s: s[0].upper() + s[1:]
