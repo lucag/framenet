@@ -450,27 +450,28 @@ def text(group):
     return group[0][0]['text.contents']
 
 
-@singleton
 class Frame:
     """Patterns for a group record."""
 
     def __init__(self, name_or_groups):
         if isinstance(name_or_groups, Groups):
-            self.groups = name_or_groups
+            self.groups = name_or_groups.groups
         elif isinstance(name_or_groups, str):
-            self.groups = Groups(name_or_groups)
+            self.groups = Groups(name_or_groups).groups
+        elif isinstance(name_or_groups, list):
+            self.groups = name_or_groups
         else:
-            raise TypeError('Frame reqires a Group or a str instance')
+            raise TypeError('Frame requires a Group or a str instance')
 
     def select(self, pattern_matcher, negative=False):
         matches = match(pattern_matcher) if not negative else compose(lambda b: not b, match(pattern_matcher))
-        gs      = [g for g in self.groups.groups if matches(to_layers(g))]
+        gs      = [g for g in self.groups if matches(to_layers(g))]
         return Frame(gs)
 
     def diagram(self, noncore=True, size=(800, 600)):
         w, h = size
         with StringIO() as sout:
-            write_records(sout, self.groups.groups, noncore)
+            write_records(sout, self.groups, noncore)
             return flowdiagram(sout.getvalue(), w, h)
 
     def display(self, pattern_matcher=None, negative=False, min_count=0, include_sentences=True):
@@ -482,7 +483,7 @@ class Frame:
         # nodes = [to_node(g) for g in self.groups]
 
         gts   = [(tuple(gf_pt_or_(l) for l in to_layers(g)), text(g))
-                 for g in self.groups.groups if pred(to_layers(g))]
+                 for g in self.groups if pred(to_layers(g))]
 
         p_to_ss  = defaultdict(list)
         for i, (k, v) in enumerate(gts): p_to_ss[k].append(v)
