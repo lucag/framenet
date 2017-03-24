@@ -441,9 +441,10 @@ def match(matcher, layer):
 class Groups:
     """Groups for a specific frame."""
 
-    def __init__(self, frame_name, base_dir='.'):
-        self.data_frame = get_frame_df(frame_name, base_dir=base_dir)
-        self.groups     = make_groups(self.data_frame.to_dict(orient='records'))
+    def __init__(self, frame_name, base_dir='.', data_frame=None, groups=None):
+        self.frame_name = frame_name
+        self.data_frame = data_frame if data_frame is not None else get_frame_df(frame_name, base_dir=base_dir)
+        self.groups     = groups or make_groups(self.data_frame.to_dict(orient='records'))
 
 
 def text(group):
@@ -453,25 +454,23 @@ def text(group):
 class Frame:
     """Patterns for a group record."""
 
-    def __init__(self, name_or_groups):
+    def __init__(self, name_or_groups, frame_name=None, groups=None):
         if isinstance(name_or_groups, Groups):
-            self.groups = name_or_groups.groups
-        elif isinstance(name_or_groups, str):
-            self.groups = Groups(name_or_groups).groups
-        elif isinstance(name_or_groups, list):
             self.groups = name_or_groups
+        elif isinstance(name_or_groups, str):
+            self.groups = Groups(name_or_groups)
         else:
             raise TypeError('Frame requires a Group or a str instance')
 
     def select(self, pattern_matcher, negative=False):
         matches = match(pattern_matcher) if not negative else compose(lambda b: not b, match(pattern_matcher))
-        gs      = [g for g in self.groups if matches(to_layers(g))]
-        return Frame(gs)
+        gs      = [g for g in self.groups.groups if matches(to_layers(g))]
+        return Frame(Groups(self.groups.frame_name, data_frame=self.groups.data_frame, groups=gs))
 
     def diagram(self, noncore=True, size=(800, 600)):
         w, h = size
         with StringIO() as sout:
-            write_records(sout, self.groups, noncore)
+            write_records(sout, self.groups.groups, noncore)
             return flowdiagram(sout.getvalue(), w, h)
 
     def display(self, pattern_matcher=None, negative=False, min_count=0, include_sentences=True):
@@ -483,7 +482,7 @@ class Frame:
         # nodes = [to_node(g) for g in self.groups]
 
         gts   = [(tuple(gf_pt_or_(l) for l in to_layers(g)), text(g))
-                 for g in self.groups if pred(to_layers(g))]
+                 for g in self.groups.groups if pred(to_layers(g))]
 
         p_to_ss  = defaultdict(list)
         for i, (k, v) in enumerate(gts): p_to_ss[k].append(v)

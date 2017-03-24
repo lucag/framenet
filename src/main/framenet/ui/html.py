@@ -132,7 +132,7 @@ def make_table_with_sentences(pattern_and_ss, total_count, style=align_r, includ
     # div(f'Total count: {total_count}')
     # # + toggle
     # + table(header + '\n'.join(rows)))
-    return link_style + table(header + '\n'.join(rows)
-                              # , Class='table-hover'
-                              )
+    return (link_style
+            + div(f'Total count: {total_count}')
+            + table(header + '\n'.join(rows)))
 
