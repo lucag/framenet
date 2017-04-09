@@ -1,6 +1,7 @@
 """Some very simple HTML stuff."""
 import string
 import uuid
+from itertools import starmap
 from numbers import Number
 from random import randrange, randint, choices
 from textwrap import dedent
@@ -52,46 +53,8 @@ env = Environment(
     , autoescape = select_autoescape(['html', 'xml'])
 )
 
-activate_popover = env.get_template('activate_popover.html')
-sent_button      = env.get_template('sent_button.html')
-
 align_r = 'text-align: right'
-
-data_template = dedent("""
-    <div class="popover" role="tooltip">
-        <div class="arrow"></div>
-        <h3 class="popover-title"></h3>
-        <div class="popover-content">
-    </div>""")
-
-transitions = dedent("""
-    <script> """)
-
 r_arrow = ' \u2192 '
-
-toggle = dedent("""
-    <script>
-    var drawer = $( ".drawer__toggle" );
-
-    var toggleState = function (selector, one, two) {
-      var elem = $( selector );
-      elem.setAttribute('data-state', elem.getAttribute('data-state') === one ? two : one);
-    };
-
-    drawer.onclick = function (e) {
-      toggleState('.drawer td', 'closed', 'open');
-      e.preventDefault();
-    };
-    </script>""")
-
-css = dedent("""
-    .drawer tr[data-state=closed] {
-        display: none;
-    }
-    .drawer tr[data-state=open] {
-        display: inherit;
-    }""")
-
 link_style = dedent("""
     <style type="text/css" media="screen">
     a.link-hover:link { color: #000; text-decoration: none; }
@@ -114,18 +77,25 @@ def make_table_with_sentences(pattern_and_ss, total_count, style=align_r, includ
     def slist(ss):
         return ul(li(s) for s in ss)
 
-    header = tr(map(th, ('', 'freq.', 'Patterns')))
+    def collapsible_pattern(_uuid, pattern, ss):
+        pattern_a = a(r_arrow.join(pattern), **{
+            'class': 'link-hover',
+            'data-toggle': 'collapse',
+            'href': f'#{_uuid}'})
+        sentences = div(slist(ss), **{
+            'id': _uuid,
+            'class': 'collapse'})
+
+        return pattern_a, sentences
+
+    def styled_th(text, alignment):
+        a = 'right' if alignment.lower() == 'r' else 'left'
+        return th(text, style=f'text-align: {a};')
+
+    header = tr(starmap(styled_th, zip(('', '$N$', 'Patterns'), ('r', 'r', 'l'))))
     rows = (tr(td(i + 1,   style=style),
                td(len(ss), style=style),
-               td((a(r_arrow.join(pattern), **{'class': 'link-hover',
-                                               'data-toggle': 'collapse',
-                                               'href': f'#{_uuid}',
-                                               # 'data-target': _uuid
-               }),
-                   div(slist(ss), **{'id': _uuid,
-                                     'class': 'collapse',
-                                     # 'style': 'vertical-align: top ; white-space: nowrap'
-                   }))))
+               td(collapsible_pattern(_uuid, pattern, ss), style='text-align: left; width: 100%;'))
             for i, (_uuid, (pattern, ss)) in enumerate(zip(uuids(), pattern_and_ss)))
     # return (#activate_popover.render()
     # # +
@@ -134,5 +104,5 @@ def make_table_with_sentences(pattern_and_ss, total_count, style=align_r, includ
     # + table(header + '\n'.join(rows)))
     return (link_style
             + div(f'Total count: {total_count}')
-            + table(header + '\n'.join(rows)))
+            + table(header + '\n'.join(rows), Class='table table-bordered', style='table-layout: auto !important;'))
 
