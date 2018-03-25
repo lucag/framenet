@@ -11,6 +11,7 @@ setup(
                        , 'qgrid'
                        , 'multimethods.py >= 0.5.3'
                        , 'wrapt'
+                       , 'lxml'
                        ],
     package_data     = { 'framenet': ['js/*.js', 'ui/templates/*.*'] },
     url              = 'https://github.com/icsi-berkeley/framenet',

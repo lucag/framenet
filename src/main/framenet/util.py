@@ -5,8 +5,8 @@ import string, sys, wrapt, itertools, math
 # @formatter:off
 from functools          import partial
 from pprint             import pformat, pprint
-from typing             import TypeVar, NamedTuple, Any, Tuple, Union, Generic, Dict, Mapping, List as TList
-from collections        import namedtuple, Callable, Sequence, Iterable, defaultdict, Hashable, MutableMapping, Iterator, Set
+from typing             import TypeVar, NamedTuple, Any, Tuple, Union, Generic, Dict, Mapping, Sequence, List as TList
+from collections        import namedtuple, Callable, Iterable, defaultdict, Hashable, MutableMapping, Iterator, Set
 from functools          import reduce, wraps
 from itertools          import chain, islice
 from operator           import concat, itemgetter
@@ -197,19 +197,29 @@ class Struct(object):
     """Create an instance with argument=value slots.
     This is for making a lightweight object whose class doesn't matter. (Author: P. Norvig)
     """
+
     def __init__(self, **entries): self.__dict__.update(entries)
 
-    def __eq__(self, other):
-        return type(other) is Struct and self.__dict__ == other.__dict__
+    def __getitem__(self, item): return self.__dict__[item]
+
+    def __eq__(self, other): return type(other) is Struct and self.__dict__ == other.__dict__
 
     def __hash__(self): return self.__dict__.__hash__()
+
+    def as_dict(self): return self.__dict__
+
+    def keys(self): return self.__dict__.keys()
+
+    def values(self): return self.__dict__.values()
+
+    def items(self): return self.__dict__.items()
 
     def __repr__(self):
         args = ['%s=%s' % (k, repr(v)) for (k, v) in vars(self).items()]
         return 'Struct(%s)' % ', '.join(sorted(args))
 
 def update(x, **entries):
-    """Update a dict, or an object with slots, according to entries.
+    """Destructively update a dict, or an object with slots, according to entries.
     >>> sorted(update({'a': 1}, a=10, b=20).items())
     [('a', 10), ('b', 20)]
     >>> update(Struct(a=1), a=10, b=20)
@@ -261,7 +271,15 @@ def getattrs(names, default, obj):
 @curry
 def getitem(index, default, seq):
     try:
-        return seq[index]
+        if isinstance(index, (list, tuple)):
+            # interpret index as a path
+            p = seq
+            for i in index:
+                print('p:', p)
+                p = p[i]
+            return p
+        else:
+            return seq[index]
     except (IndexError, KeyError) as e:
         if default is __unset__:
             raise
@@ -274,7 +292,9 @@ def getitem(index, default, seq):
 def getitems(indices, default, seq):
     return tuple(getitem(i, default, seq) for i in indices)
 
+# TODO: these should not differentiate between singleton/non-singleton indices (and return different types...)
 def iget(*indices, default=__unset__):
+    # print('indices', indices)
     if not indices:
         raise ValueError('At least one index is needed')
     elif len(indices) == 1:
@@ -287,7 +307,13 @@ def aget(*names, default=__unset__):
         raise ValueError('At least one attribute name is needed')
     elif len(names) == 1:
         if default is __unset__:
-            return lambda obj: getattr(obj, names[0])
+            def try_getattr(obj):
+                try:
+                    return getattr(obj, names[0])
+                except AttributeError as x:
+                    print(f'problem {x} trying to get {names[0]} out of {obj}')
+                    raise
+            return try_getattr
         else:
             return lambda obj: getattr(obj, names[0], default)
     else:
@@ -530,7 +556,7 @@ def cata(f, tree):
     cata :: (a -> [b] -> b) -> Tree a -> b
     cata f (Node root children) = f root (map (cata f) children)
     """
-    return f(tree.value(), map(cata(f), tree.children()))
+    return f(tree.head(), map(cata(f), tree.tail()))
 
 
 def juxt(*fs):
@@ -647,15 +673,22 @@ def mergewith(binop, m1: Mapping[A, B], m2: Mapping[A, B]) -> Mapping[A, B]:
                       ((k, m2[k]) for k in k2 - k1)))
 
 
-def merge(m: Dict, items: TList[Tuple[str, Any]]) -> Dict:
+def merge_kv(m: Dict, k, v) -> Dict:
+    """Destructively merge (k, v) item into dictionary m."""
+    if k in m and m[k] != v:
+        raise ValueError('Item (%s -> %s) already in dictionary %s (%s)' % (k, v, m, items))
+    else:
+        m[k] = v
+
+    return m
+
+
+def merge(m: Dict, items: Sequence[Tuple[str, Any]], merge_kv=merge_kv) -> Dict:
     """Safely merge `items` into mapping `m`, destructively.
     Raises exception if key is shared among `items`.
     """
     for k, v in items:
-        if k in m and m[k] != v:
-            raise ValueError('Item (%s -> %s) already in dictionary %s (%s)' % (k, v, m, items))
-        else:
-            m[k] = v
+        merge_kv(m, k, v)
 
     return m
 

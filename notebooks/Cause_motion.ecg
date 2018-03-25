@@ -1,0 +1,36 @@
+schema Cause_motion 
+    subcase of Transitive_action 
+    evokes Motion as motion 
+    roles 
+       // agent: @sentient (inherited from Transitive_action)
+       // cause (inherited from Transitive_action)
+       // depictive (inherited from Transitive_action)
+       // manner: @manner (inherited from Transitive_action)
+       // means: @state_of_affairs (inherited from Transitive_action)
+       // place: @locative_relation (inherited from Transitive_action)
+       // result (inherited from Transitive_action)
+       // time: @time (inherited from Transitive_action)
+       area
+       degree: @degree
+       distance
+       explanation
+       goal: @goal
+       handle
+       initial_state
+       instrument: @physical_entity
+       path
+       source: @source
+       subregion: @locative_relation
+       theme: @physical_object
+     constraints 
+       patient ⟷ theme
+       area ⟷ motion.area
+       degree ⟷ motion.degree
+       depictive ⟷ motion.depictive
+       distance ⟷ motion.distance
+       goal ⟷ motion.goal
+       manner ⟷ motion.manner
+       path ⟷ motion.path
+       result ⟷ motion.result
+       source ⟷ motion.source
+       theme ⟷ motion.theme

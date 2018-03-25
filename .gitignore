@@ -4,11 +4,13 @@ __pycache__/
 *.class
 /.idea/
 /framenet.iml
-/data
-/tmp
-/out
+/data/
+tmp/
+out/
 *.egg-info/
 .ipynb_checkpoints/
 *.csv
 *.pkl
 .DS_Store
+/venv/
+/target/

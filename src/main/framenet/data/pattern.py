@@ -1,5 +1,5 @@
 """Pattern matching-related stuff."""
-
+from functools import reduce
 from pprint         import pprint, pformat
 from typing         import NamedTuple, List, Tuple, Dict, Callable, Union, Any
 from framenet.util  import flatten, flatmap, singleton
@@ -27,12 +27,12 @@ class Pattern:
             return True
 
 
-# A `Lexer` is a map from strings to lists of `Lexer`s.
-# Lexer = Dict[str, List['Lexer']]
-
 class Lexer:
-    """A simple, immutable dictionary. """
+    """A simple, immutable dictionary.
 
+    A `Lexer` is a map from strings to lists of `Lexer`s.
+    Lexer = Dict[str, List['Lexer']]
+    """
     __str__ = __repr__ = lambda self: f'Lexer({self.d!r})'
 
     def __init__(self, d=None):
@@ -49,15 +49,17 @@ class Lexer:
         else:
             return self.d.get(wildcard, default)
 
-    def keys(self):                 return self._keys
-    def values(self):               return self._values
-    def items(self):                return self._items
-    def __bool__(self):             return bool(self._items)
-    def __getitem__(self, s):       return self.d[s]
-    def __hash__(self):             return self._hash
+    def keys(self):             return self._keys
+    def values(self):           return self._values
+    def items(self):            return self._items
+    def __bool__(self):         return bool(self._items)
+    def __getitem__(self, s):   return self.d[s]
+    def __hash__(self):         return self._hash
+
+    # noinspection PyProtectedMember
     def __eq__(self, other):
         # print('>> eq called!')
-        return type(other) == Lexer and other._items == self._items
+        return type(other) is Lexer and other._items == self._items
 
 
 # TODO: Hide this? No.
@@ -72,10 +74,42 @@ def mergemany(ls1: Tuple[Lexer, ...], ls2: Tuple[Lexer, ...], debug=False) -> Tu
         return ls1
     else:
         (l1, *r1), (l2, *r2) = ls1, ls2
-        return (merge(l1, l2, debug),) + mergemany(tuple(r1), tuple(r2), debug)
+        if l1 != l2:
+            return (merge(l1, l2, debug),) + mergemany(tuple(r1), tuple(r2), debug)
+        else:
+            return (l1,) + mergemany(tuple(r1), tuple(r2), debug)
+
+
+import traceback as tb
+
+def callers():
+    frame = tb.extract_stack()
+    return [f'{fname}:{ln}' for (_1, ln, fname, text) in frame]
+
+
+class Thunk:
+    __unk__ = "__unk__"
+    __str__ = __repr__ = lambda self: f"Thunk({'?' if self.v is Thunk.__unk__ else self.v!r})"
+
+    def __init__(self, f, debug=False):
+        self.f, self.v, self.debug  = f, Thunk.__unk__, debug
+
+    def __call__(self):
+        v = self.v
+        if v is Thunk.__unk__:
+            self.v = v = self.f()
+            if self.debug:
+                print(f'Thunk | computed a {v}')
+                print(f'      | called from { pformat(callers()[-4:-2]) }')
+        else:
+            if self.debug:
+                print(f'Thunk | already had a {v}')
+                print(f'      | called from { pformat(callers()[-4:-2]) }')
+        return v
+
 
 # @dispatch(Lexer, Lexer)
-def merge(l1: Lexer, l2: Lexer, debug=False) -> Lexer:
+def merge(l1: Union[Lexer, Thunk], l2: Union[Lexer, Thunk], debug=False) -> Lexer:
     l1, l2 = map(maybe_force, (l1, l2))
 
     if debug: print(f'merge({l1}, {l2})')
@@ -95,8 +129,9 @@ def merge(l1: Lexer, l2: Lexer, debug=False) -> Lexer:
 def mapvalues(f, d: Dict) -> Dict:
     return {k: [f(x) for x in v] for k, v in d.items()}
 
-def maybe_force(expr) -> Lexer:
-    return expr() if isinstance(expr, Callable) else expr
+
+def maybe_force(expr: Union[Thunk, Lexer]) -> Lexer:
+    return maybe_force(expr()) if isinstance(expr, Thunk) else expr
 
 # TODO: This cannot work in Python.
 def force(lexer) -> Dict:
@@ -139,27 +174,40 @@ class RegExp:
     def __or__(self, other): return Alt(self, other)
 
     def match(self, xs, initial=None, debug=False) -> bool:
+        assert all(x for x in xs)
         # A `Lexer` is actually a state
         # lexers = [force(self(Lexer() if not initial else initial))]
-        lexers = [self(Lexer() if not initial else initial)]
+        lexers = [self(Lexer({None: (Success(),)}) if not initial else initial)]
 
         if debug: pprint(lexers)
 
-        for x in xs:
-            if debug: print(f'trying to match {x} against {pformat(lexers)}')
-            lexers = list(flatten(maybe_force(l).get(x, ()) for l in lexers))
-            if debug: print(f'match returned {pformat(lexers)}')
+        def step(ls_c, x):
+            ls, c = ls_c
+            if debug: print(f'trying to match { x } against { pformat(ls) }')
+            new_ls = list(flatten(maybe_force(l).get(x, ()) for l in ls))
+            if debug: print(f'match returned { pformat(ls) }')
+            return new_ls, c + 1
 
-            if not lexers:
-                return False
+        final_state, count = reduce(step, list(xs) + [None], (lexers, 0))
+
+        if debug:
+            print(f'match | remaining:   { len(xs) - count + 1}')
+            print(f'      | final_state: { final_state }')
+
+        if not final_state:
+            return False
         else:
-            return True
+            return count == 1 + len(xs) and final_state == [Success()]
 
+
+# noinspection PyAbstractClass
 class UnExp(RegExp):
     __str__ = __repr__ = lambda self: f'{type(self).__name__}({self.a!r})'
-    def __init__(self, a): self.a = a
+    def __init__(self, a: Union[RegExp, Thunk]): self.a = a
     def __iter__(self): yield from self.a
 
+
+# noinspection PyAbstractClass
 class BinExp(RegExp):
     __str__ = __repr__ = lambda self: f'{type(self).__name__}({self.a!r}, {self.b})'
     def __init__(self, a: RegExp, b: RegExp):
@@ -186,16 +234,19 @@ class Lit(UnExp):
 
 class Seq(BinExp):
     def __call__(self, lexer: Lexer) -> Lexer:
-        return self.a(lambda: self.b(lexer))
+        # return Thunk(lambda: self.a(Thunk(lambda: self.b(lexer))))
+        return self.a(self.b(lexer))
 
 class Alt(BinExp):
     def __call__(self, lexer: Lexer) -> Lexer:
-        return merge(self.a(lexer), self.b(lexer))
+        return merge(self.a(lexer), self.b(lexer), debug=False)
 
 class Many(UnExp):
     def __call__(self, lexer):
         # return ((self.a & (lambda l: self(l))) | Epsilon())(lexer)
-        return ((self.a & self) | Success())(lexer)
+        # return ((self.a & self) | Success())(lexer)
+        self_lexer = Thunk(lambda: merge(self.a(self_lexer), lexer, debug=True))
+        return self_lexer
 
 class Many1(UnExp):
     def __call__(self, lexer):
@@ -205,15 +256,3 @@ class Opt(UnExp):
     # def __init__(self, a): self.a = Alt(Success(), a)
     def __call__(self, lexer):
         return (self.a | Success())(lexer)
-
-# class OneOrMore(UnExp):
-#     def __call__(self, lexer):
-#         return (ZeroOrMore(self.a) & self.a)(lexer)
-#
-# class ZeroOrMore(UnExp):
-#     def __call__(self, lexer):
-#         al = self.a(lexer)
-#         this = dict()
-#         this.update({s: mergemany(als, [this]) for s, als in al.items()})
-#         pprint(this)
-#         return merge(lexer, this)

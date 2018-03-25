@@ -1,0 +1,15 @@
+construction Cause_motion_pattern_10
+    subcase of ArgumentStructure
+
+contructional 
+    constituents
+        v: Verb
+        pp-into: PP-Into
+        np: NP
+
+meaning: Cause_motion
+    constraints
+        self.m ⟷ v.m
+        profiledParticipant ⟷ self.m.agent
+        self.m.goal ⟷ pp-into.m
+        self.m.theme ⟷ np.m

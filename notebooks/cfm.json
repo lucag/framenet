@@ -1,0 +1,973 @@
+"{\"nodes\": [{\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Brandon then told
+one of the other group : ` Order your food and leave if you do n't want trouble , or I 'll splatter your face across
+the road . \\\"\"}, {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Brandon
+then told one of the other group : ` Order your food and leave if you do n't want trouble , or I 'll splatter your
+face across the road . \\\"\"}, {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"Brandon then told one of the other group : ` Order your food and leave if you do n't want trouble , or I 'll
+splatter your face across the road . \\\"\"}, {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"` Another scene cut was one where a man 's brains are splattered over a window . \\\"\"}, {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"` Another scene cut was one where a man 's
+brains are splattered over a window . \\\"\"}, {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\":
+true, \"text\": \"` Another scene cut was one where a man 's brains are splattered over a window . \\\"\"}, {\"id\":
+\"2:Path\", \"FE\": \"Path\", \"GF\": \"Dep\", \"core\": true, \"text\": \"At that moment a youth sprinted past ,
+tipped over her glass and splattered the tomato juice across the concrete .\"}, {\"id\": \"3:Goal\", \"FE\":
+\"Goal\", \"GF\": \"DNI\", \"core\": true, \"text\": \"At that moment a youth sprinted past , tipped over her glass
+and splattered the tomato juice across the concrete .\"}, {\"id\": \"1:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\",
+\"core\": true, \"text\": \"No matter how much Norse manure you splatter on to them , they 've a habit of coming up
+smelling of roses .\"}, {\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"For a
+moment she looked furiously at Donald , her teeth bared like a cat 's , then she shook her hair out , spattering
+Donald with bree and barley , and hauled him back into the dance .\"}, {\"id\": \"0:Cause\", \"FE\": \"Cause\",
+\"GF\": \"Ext\", \"core\": true, \"text\": \"During the engagement A.A. bursts were exploding all round me , my port
+plane received a near miss which made a large hole and spattered the aircraft with splinters , which injured my left
+elbow . \\\"\"}, {\"id\": \"1:Cause\", \"FE\": \"Cause\", \"GF\": \"Ext\", \"core\": true, \"text\": \"During the
+engagement A.A. bursts were exploding all round me , my port plane received a near miss which made a large hole and
+spattered the aircraft with splinters , which injured my left elbow . \\\"\"}, {\"id\": \"3:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"During the engagement A.A. bursts were exploding all round me
+, my port plane received a near miss which made a large hole and spattered the aircraft with splinters , which
+injured my left elbow . \\\"\"}, {\"id\": \"1:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"` Put it out , \\\" she screamed at Julie as another burst of fire from the UZI spattered the cottage
+.\"}, {\"id\": \"3:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"` Put it out , \\\" she
+screamed at Julie as another burst of fire from the UZI spattered the cottage .\"}, {\"id\": \"2:Result\", \"FE\":
+\"Result\", \"GF\": \"Dep\", \"core\": false, \"text\": \"More bullets spattered the front of the cottage , drilling
+lines back and forth in the stonework .\"}, {\"id\": \"2:Cause\", \"FE\": \"Cause\", \"GF\": \"CNI\", \"core\": true,
+\"text\": \"Before the sound of the gunshot , before the Captain 's brains mixed with blood were spattered on to the
+instrument panel in front of him , Terry thought he heard him say something .\"}, {\"id\": \"0:Time\", \"FE\":
+\"Time\", \"GF\": \"Dep\", \"core\": false, \"text\": \"In days of yore , such places were spattered with the blood
+of sacrificial victims to ensure good fortune in battle , and dunters are thought to be the spirits of these unhappy
+people .\"}, {\"id\": \"3:Explanation\", \"FE\": \"Explanation\", \"GF\": \"Dep\", \"core\": false, \"text\": \"In
+days of yore , such places were spattered with the blood of sacrificial victims to ensure good fortune in battle ,
+and dunters are thought to be the spirits of these unhappy people .\"}, {\"id\": \"4:Agent\", \"FE\": \"Agent\",
+\"GF\": \"CNI\", \"core\": true, \"text\": \"In days of yore , such places were spattered with the blood of
+sacrificial victims to ensure good fortune in battle , and dunters are thought to be the spirits of these unhappy
+people .\"}, {\"id\": \"0:Goal\", \"FE\": \"Goal\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Bloxham looked down
+to see that his silk tie was comprehensively spattered with puke .\"}, {\"id\": \"1:Manner\", \"FE\": \"Manner\",
+\"GF\": \"Dep\", \"core\": false, \"text\": \"Bloxham looked down to see that his silk tie was comprehensively
+spattered with puke .\"}, {\"id\": \"3:Cause\", \"FE\": \"Cause\", \"GF\": \"INI\", \"core\": true, \"text\":
+\"Bloxham looked down to see that his silk tie was comprehensively spattered with puke .\"}, {\"id\": \"2:Source\",
+\"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Some of them were spattered with blood from the
+carcasses that hung on a row of meat-hooks nearby .\"}, {\"id\": \"2:Manner\", \"FE\": \"Manner\", \"GF\": \"Dep\",
+\"core\": false, \"text\": \"Rain spattered against the windscreen as Fenn drove through the tall iron gates .\"},
+{\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Something spattered all over his
+face : he put up his hand and his fingers came away red .\"}, {\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\": \"INI\",
+\"core\": true, \"text\": \"Mowbray 's body crashed against the earth , his brains spattering as the sharp , icy
+cobbles crushed his skull .\"}, {\"id\": \"3:Time\", \"FE\": \"Time\", \"GF\": \"Dep\", \"core\": false, \"text\":
+\"They will probably pump more oil in coming months .\"}, {\"id\": \"4:Source\", \"FE\": \"Source\", \"GF\": \"INI\",
+\"core\": true, \"text\": \"They will probably pump more oil in coming months .\"}, {\"id\": \"1:Time\", \"FE\":
+\"Time\", \"GF\": \"Dep\", \"core\": false, \"text\": \"This way , millions of tonnes of waste each year could be
+pumped into the deep sea .\"}, {\"id\": \"4:Time\", \"FE\": \"Time\", \"GF\": \"Dep\", \"core\": false, \"text\":
+\"Do n't forget to add the Aquasafe at this stage , to remove the chlorines and chloramines that our water boards are
+pumping into the tapwater at the moment .\"}, {\"id\": \"4:Goal\", \"FE\": \"Goal\", \"GF\": \"DNI\", \"core\": true,
+\"text\": \"The expanding vapour drives a turbo generator while the ammonia is reliquefied in a condenser by cold
+water pumped from as deep as 3,000 feet in a self-contained operation .\"}, {\"id\": \"1:Path\", \"FE\": \"Path\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"This in turn helps your body to pump out toxins and excess fluid .\"},
+{\"id\": \"3:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Baron de Tracy grinned openly
+and grabbed a drinking-horn , splashing some wine into it from the jug on the table .\"}, {\"id\": \"1:Means\",
+\"FE\": \"Means\", \"GF\": \"Head\", \"core\": false, \"text\": \"Then she raised one foot and brought it down with a
+smack on the water , splashing him , and laughed .\"}, {\"id\": \"2:Explanation\", \"FE\": \"Explanation\", \"GF\":
+\"Dep\", \"core\": false, \"text\": \"Police were waiting on the streets and the square was turned into a dangerous ,
+slippery ` ice rink \\\" as water was sprayed over the hallowed ground in an effort to deter the demonstrators .\"},
+{\"id\": \"4:Explanation\", \"FE\": \"Explanation\", \"GF\": \"Dep\", \"core\": false, \"text\": \"This spotted sea
+hare ( above ) is a mollusc that can squirt a cloud of purple ink into the water in response to the approach of a
+predator .\"}, {\"id\": \"4:Result\", \"FE\": \"Result\", \"GF\": \"Dep\", \"core\": false, \"text\": \"Most species
+also squirt the oil at intruders as a form of defence so that the ground around the nest becomes impregnated with it
+.\"}, {\"id\": \"3:Manner\", \"FE\": \"Manner\", \"GF\": \"Dep\", \"core\": false, \"text\": \"Juron squirted his
+water canteen into that arid gob again and again .\"}, {\"id\": \"3:Path\", \"FE\": \"Path\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"That increases the surface tension on the top of the coffee -- or is it the specific
+gravity ? -- so that when you dribble the cream slowly down over the back of the spoon it stays on the top . ''\"},
+{\"id\": \"2:Time\", \"FE\": \"Time\", \"GF\": \"Dep\", \"core\": false, \"text\": \"Looks as though Miss Easterbrook
+spilt her tea yesterday .\"}, {\"id\": \"3:Area\", \"FE\": \"Area\", \"GF\": \"INI\", \"core\": true, \"text\":
+\"Looks as though Miss Easterbrook spilt her tea yesterday .\"}, {\"id\": \"2:Place\", \"FE\": \"Place\", \"GF\":
+\"Dep\", \"core\": false, \"text\": \"A plate of sausages had been spilt onto the ground beside one of the fires
+.\"}, {\"id\": \"3:Means\", \"FE\": \"Means\", \"GF\": \"Dep\", \"core\": false, \"text\": \"The wings close slightly
+and become more angular as the wind-speed increases ( E ) , when stooping for food , the gull spills air by raising
+its wings ( F ) .\"}], \"links\": [{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"A handsome Irish youth with ginger hair squirted some boiling water into the teapot and swilled a
+cup of dark brown liquid into a chipped cup .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"A handsome Irish youth with ginger hair squirted some boiling water into the
+teapot and swilled a cup of dark brown liquid into a chipped cup .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"A milkman has been temporarily blinded
+by two men who sprayed superglue into his eyes .\"}, \"target\": {\"id\": \"1:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"A milkman has been temporarily blinded by two men who sprayed superglue into his
+eyes .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"A valuable way of concealing them is to have bars , stripes or blobs of colour that appear to overflow
+from one section to the next , as though someone has splashed ink across the animal .\"}, \"target\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"A valuable way of concealing them is to
+have bars , stripes or blobs of colour that appear to overflow from one section to the next , as though someone has
+splashed ink across the animal .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"Anemones tend to dribble a little water from their centres if you press them
+.\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Anemones tend
+to dribble a little water from their centres if you press them .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Angry farmer sprays muck on a
+council\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Angry
+farmer sprays muck on a council\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"At that moment a youth sprinted past , tipped over her glass and splattered the
+tomato juice across the concrete .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"At that moment a youth sprinted past , tipped over her glass and splattered the tomato
+juice across the concrete .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\",
+\"core\": true, \"text\": \"Baron de Tracy grinned openly and grabbed a drinking-horn , splashing some wine into it
+from the jug on the table .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"Baron de Tracy grinned openly and grabbed a drinking-horn , splashing some wine into it from the jug on
+the table .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"Battling Dave Cannon sprayed a whole trailer-load of the cow muck over a council building after plans
+ for his retirement bungalow were turned down for the fourth time .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Battling Dave Cannon sprayed a whole trailer-load of the cow
+muck over a council building after plans for his retirement bungalow were turned down for the fourth time .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"Betty watched him as he splashed a little soda in each , and handed her one .\"}, \"target\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Betty watched him as he splashed a little soda in
+ each , and handed her one .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"Brandon then told one of the other group : ` Order your food and leave if you
+do n't want trouble , or I 'll splatter your face across the road . \\\"\"}, \"target\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Brandon then told one of the other group : ` Order
+your food and leave if you do n't want trouble , or I 'll splatter your face across the road . \\\"\"}, \"count\":
+1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Carter toppled
+over and lay pumping his blood onto the canteen floor .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"Carter toppled over and lay pumping his blood onto the canteen floor
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"Cupping his hands in the large jug , he splashed cold water over his face and chest , rubbing it up and down his
+arms before towelling himself down .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"Cupping his hands in the large jug , he splashed cold water over his face and chest ,
+rubbing it up and down his arms before towelling himself down .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\",
+\"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Eddie splashed more of the liquid against his
+temples , brushing it back and then rubbing it in with a comb .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Eddie splashed more of the liquid against his temples ,
+brushing it back and then rubbing it in with a comb .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\":
+\"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Edward lifted it and splashed a little water into the teapot
+, swirling it around .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"Edward lifted it and splashed a little water into the teapot , swirling it around .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Emergency crews
+were called to pump water from 7 houses .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"Emergency crews were called to pump water from 7 houses .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Farmers in the region are not
+allowed to spray manure over the surface of their fields .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"Farmers in the region are not allowed to spray manure over the surface
+of their fields .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"For a moment she looked furiously at Donald , her teeth bared like a cat 's , then she shook her
+hair out , spattering Donald with bree and barley , and hauled him back into the dance .\"}, \"target\": {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"For a moment she looked furiously at
+Donald , her teeth bared like a cat 's , then she shook her hair out , spattering Donald with bree and barley , and
+hauled him back into the dance .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"For many of them , the classroom will be the first place where they are able to
+play with water and even spill it on the floor without incurring an adult 's displeasure .\"}, \"target\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"For many of them , the classroom will be
+the first place where they are able to play with water and even spill it on the floor without incurring an adult 's
+displeasure .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"He crouched behind the mother to squirt milk into the bottle .\"}, \"target\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"He crouched behind the mother to squirt
+milk into the bottle .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\",
+\"core\": true, \"text\": \"He shook his head , spraying drops over the room , over his clothes discarded on the
+floor .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"He
+shook his head , spraying drops over the room , over his clothes discarded on the floor .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"He splashed some
+down the front of my tunic and was gone .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"He splashed some down the front of my tunic and was gone .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"He splashed
+whiskey into the glasses .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"He splashed whiskey into the glasses .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\":
+\"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"He unswung the machine-gun and sprayed the bullets into the
+trees , sending his hunters scattering for cover .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"He unswung the machine-gun and sprayed the bullets into the trees , sending his
+hunters scattering for cover .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"His friends carry his rigid , moaning body to one side and an older woman
+splashes him with water .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"His friends carry his rigid , moaning body to one side and an older woman splashes him with water .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"However , its task is made much more difficult by the fact that derogations granted to the Welsh water authority
+allow it to pump raw sewage into both those rivers .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"However , its task is made much more difficult by the fact that derogations
+granted to the Welsh water authority allow it to pump raw sewage into both those rivers .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"However , once the
+salt fingers are formed , they are pumping salty fluid into the top of the bottom layer and less salty fluid into the
+bottom of the top layer .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"However , once the salt fingers are formed , they are pumping salty fluid into the top of the bottom
+layer and less salty fluid into the bottom of the top layer .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\",
+\"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"I splashed more over my face .\"}, \"target\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"I splashed more over my face
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"I splashed water over my face , slicked unruly grey hair into a more reasonable disorder , and headed down to the
+lobby again .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"I
+splashed water over my face , slicked unruly grey hair into a more reasonable disorder , and headed down to the lobby
+again .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"In fact , she thought as she splashed cold water on to her hot face , she had n't seen him all morning --
+perhaps he 'd taken himself off for a walk .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"In fact , she thought as she splashed cold water on to her hot face , she had
+n't seen him all morning -- perhaps he 'd taken himself off for a walk .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"It is a superbly efficient food gatherer
+, and can siphon ten gallons of water at a single suck and squirt this into the elephant 's mouth .\"}, \"target\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"It is a superbly efficient food
+gatherer , and can siphon ten gallons of water at a single suck and squirt this into the elephant 's mouth .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"Jenna jumped up , almost spilling her coffee , making a hasty grab for the delicate cup and amusing him even more
+.\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Jenna jumped
+up , almost spilling her coffee , making a hasty grab for the delicate cup and amusing him even more .\"}, \"count\":
+1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Mojo shook the
+thing fiercely , spraying ink over the station head .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"Mojo shook the thing fiercely , spraying ink over the station head .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"My
+ hand jerked so that I almost spilled my wine .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"My hand jerked so that I almost spilled my wine .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Needing something
+light and refreshing to slake a newly parched mouth and throat , she squirted soda from a siphon into a tall glass
+and added a cluster of ice cubes .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"Needing something light and refreshing to slake a newly parched mouth and throat , she
+squirted soda from a siphon into a tall glass and added a cluster of ice cubes .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"One possibility being
+considered is for solar power to be used to pump downstream water back up to the main reservoir , so restoring the
+head of water needed to generate hydro-electric power .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"One possibility being considered is for solar power to be used to pump
+downstream water back up to the main reservoir , so restoring the head of water needed to generate hydro-electric
+power .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"Rainbow jumps , spilling coffee all over the table and herself .\"}, \"target\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Rainbow jumps , spilling coffee all over the table
+and herself .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"She came down heavily , spattering her nightdress with earth , shards of flowerpot , dark streaks
+of water from spilled asters .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"She came down heavily , spattering her nightdress with earth , shards of flowerpot , dark streaks
+of water from spilled asters .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"She splashed water on her face , wishing she had her overnight case up here with
+her , wondering if it would be possible to make a deal with Ace .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"She splashed water on her face , wishing she had her
+overnight case up here with her , wondering if it would be possible to make a deal with Ace .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"So Daedalus is
+squirting one such solution through small round nozzles into the other .\"}, \"target\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"So Daedalus is squirting one such solution through
+small round nozzles into the other .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"Some female handed them a hypo-bulb and they sprayed it into Jezrael 's face ,
+and there was a physical paralysis leadening her without physical pain .\"}, \"target\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Some female handed them a hypo-bulb and they sprayed
+it into Jezrael 's face , and there was a physical paralysis leadening her without physical pain .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The Church of
+England vicar blessed the Northamp stately home , splashed holy water on the walls and said prayers to ward off the
+spirit .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The
+Church of England vicar blessed the Northamp stately home , splashed holy water on the walls and said prayers to ward
+off the spirit .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"The Suffolk Water Company is pumping specially dechlorinated water into the habitat of the fen raft
+spider , Britain 's largest and rarest , to save it from extinction .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The Suffolk Water Company is pumping specially dechlorinated
+water into the habitat of the fen raft spider , Britain 's largest and rarest , to save it from extinction .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The
+combat unit had sprayed napalm or some napalm analogue into the Silver Shuriken , and he was clothed in fire .\"},
+\"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The combat unit had
+sprayed napalm or some napalm analogue into the Silver Shuriken , and he was clothed in fire .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The extreme force
+of the blows had splashed blood on the walls and ceilings .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"The extreme force of the blows had splashed blood on the walls and
+ceilings .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"The following week tests were carried out and I went with Dad to watch the Brigade endeavouring to pump
+water to the roof of Blooms the Drapers on The Canal -- possibly the City 's tallest building .\"}, \"target\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The following week tests were
+carried out and I went with Dad to watch the Brigade endeavouring to pump water to the roof of Blooms the Drapers on
+The Canal -- possibly the City 's tallest building .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\":
+\"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The longer we continue to pump lead into the atmosphere , the
+more it will accumulate .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"The longer we continue to pump lead into the atmosphere , the more it will accumulate .\"}, \"count\":
+1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The priest
+took the basin of blood and spattered it against the altar .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"The priest took the basin of blood and spattered it against the altar
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"They sprayed cold water on my dog when it was snowing and all her fur froze .\"}, \"target\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"They sprayed cold water on my dog when
+it was snowing and all her fur froze .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\",
+\"GF\": \"Ext\", \"core\": true, \"text\": \"They will pump waste water to an existing sewer at Crosby Road South and
+then to North West Water 's multimillion pound treatment works at Sandon Dock .\"}, \"target\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"They will pump waste water to an existing sewer at
+Crosby Road South and then to North West Water 's multimillion pound treatment works at Sandon Dock .\"}, \"count\":
+1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"This has been
+open to doubt since June 8 , 1989 when an extreme left-wing group pumped 20 bullets into Valenzuela 's former chief ,
+` Wally \\\" Fuentes Morrison .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"This has been open to doubt since June 8 , 1989 when an extreme left-wing group pumped 20 bullets
+into Valenzuela 's former chief , ` Wally \\\" Fuentes Morrison .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"This scholar dribbling tea\"},
+\"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"This scholar
+dribbling tea\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"Vital messages from the brain to the body slow down and nerves in the heart , sensing something is
+wrong , react by instructing the heart to pump extra blood to the brain .\"}, \"target\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Vital messages from the brain to the body slow down
+and nerves in the heart , sensing something is wrong , react by instructing the heart to pump extra blood to the
+brain .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"Watching the Turks spray it around the park against our implacable foes , the English recently , the
+mystery deepened as to how we managed to knock in five goals against them at Lansdowne Road .\"}, \"target\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Watching the Turks spray it
+around the park against our implacable foes , the English recently , the mystery deepened as to how we managed to
+knock in five goals against them at Lansdowne Road .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\":
+\"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"We ca n't blame them that vandals spray paint on the walls
+.\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"We ca n't
+blame them that vandals spray paint on the walls .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\":
+\"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"When he saw us he choked and sprayed the beer onto the lawn
+.\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"When he saw
+us he choked and sprayed the beer onto the lawn .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\":
+\"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"When she and Frank were children , they used to skip the
+puddles , or sometimes land in the middle , spattering themselves , with shouts of glee .\"}, \"target\": {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"When she and Frank were children , they
+used to skip the puddles , or sometimes land in the middle , spattering themselves , with shouts of glee .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"Willie , whose stomach had been steadily growing tighter , almost spilt his tea over his shorts .\"}, \"target\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Willie , whose stomach had been
+steadily growing tighter , almost spilt his tea over his shorts .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"` Bastard ! \\\" cried Bernard ,
+belabouring Jed with his fists , splattering cheap red wine over books and walls .\"}, \"target\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"` Bastard ! \\\" cried Bernard ,
+belabouring Jed with his fists , splattering cheap red wine over books and walls .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"0:Agent\", \"FE\": \"Agent\", \"GF\": \"INI\", \"core\": true, \"text\": \"Human relationships can not
+usually be kept within neat bounds by both partners , but tend to spill over in deep emotions of pain and anger .\"},
+\"target\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"INI\", \"core\": true, \"text\": \"Human relationships
+can not usually be kept within neat bounds by both partners , but tend to spill over in deep emotions of pain and
+anger .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Cause\", \"FE\": \"Cause\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"It was night , and as the wind gusted down the iron chimney pipe , a shower of metal flakes spattered on
+to the wooden floor .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"It was night , and as the wind gusted down the iron chimney pipe , a shower of metal flakes spattered on
+to the wooden floor .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Cause\", \"FE\": \"Cause\", \"GF\": \"Ext\",
+\"core\": true, \"text\": \"Bright little bunches of cherries or grapes splashed their large hats with colour .\"},
+\"target\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Bright little bunches
+of cherries or grapes splashed their large hats with colour .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Cause\",
+\"FE\": \"Cause\", \"GF\": \"Ext\", \"core\": true, \"text\": \"During the engagement A.A. bursts were exploding all
+round me , my port plane received a near miss which made a large hole and spattered the aircraft with splinters ,
+which injured my left elbow . \\\"\"}, \"target\": {\"id\": \"1:Cause\", \"FE\": \"Cause\", \"GF\": \"Ext\",
+\"core\": true, \"text\": \"During the engagement A.A. bursts were exploding all round me , my port plane received a
+near miss which made a large hole and spattered the aircraft with splinters , which injured my left elbow . \\\"\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Cause\", \"FE\": \"Cause\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"Luck playing a somewhat greater part in the matter than judgement , the bullet struck him in the calf , tore
+through the muscles there and exited , spattering the wall behind with blood and pink tissue .\"}, \"target\":
+{\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Luck playing a somewhat greater
+part in the matter than judgement , the bullet struck him in the calf , tore through the muscles there and exited ,
+spattering the wall behind with blood and pink tissue .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Cause\", \"FE\":
+\"Cause\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The HEART pumps blood around the body .\"}, \"target\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The HEART pumps blood around
+the body .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Cause\", \"FE\": \"Cause\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"The flak batteries would be waiting to pump their filth all over the sky .\"}, \"target\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The flak batteries would be waiting to
+pump their filth all over the sky .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Cause\", \"FE\": \"Cause\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"The system works by pumping liquid ink from a reservoir to the tip of a very
+fine jet .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The
+system works by pumping liquid ink from a reservoir to the tip of a very fine jet .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"0:Cause\", \"FE\": \"Cause\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The tank itself could split ,
+spilling fuel over the boat and leaving none left to get home ! 3 .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The tank itself could split , spilling fuel over the boat and
+leaving none left to get home ! 3 .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Cause\", \"FE\": \"Cause\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"This in turn helps your body to pump out toxins and excess fluid .\"},
+\"target\": {\"id\": \"1:Path\", \"FE\": \"Path\", \"GF\": \"Dep\", \"core\": true, \"text\": \"This in turn helps
+your body to pump out toxins and excess fluid .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"A man who had superglue squirted in his face by muggers may
+have lost the sight of one eye .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"A man who had superglue squirted in his face by muggers may have lost the sight of one eye .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"A
+milkman who was temporarily blinded when superglue was squirted into his eyes , has given up his job .\"},
+\"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"A milkman who was
+temporarily blinded when superglue was squirted into his eyes , has given up his job .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"A third of sewage
+pumped into the sea is untreated .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"A third of sewage pumped into the sea is untreated .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"And he would be thinking of her , and
+wanting her , and watching the raindrops as they spattered against the window .\"}, \"target\": {\"id\": \"1:Goal\",
+\"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"And he would be thinking of her , and wanting her ,
+and watching the raindrops as they spattered against the window .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"And that was restrained compared with
+the green pantiles , Spanish ironwork , provenl shutters and stained-glass leaded windows spattered along the rest of
+the road .\"}, \"target\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Obj\", \"core\": true, \"text\": \"And
+that was restrained compared with the green pantiles , Spanish ironwork , provenl shutters and stained-glass leaded
+windows spattered along the rest of the road .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"As they drew closer , they could see that the sides of the
+surrounding containers were covered with a gleaming wetness , spattered to a height a few feet above their heads
+.\"}, \"target\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\": true, \"text\": \"As they drew
+closer , they could see that the sides of the surrounding containers were covered with a gleaming wetness , spattered
+to a height a few feet above their heads .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Ext\", \"core\": true, \"text\": \"Before the sound of the gunshot , before the Captain 's brains mixed
+with blood were spattered on to the instrument panel in front of him , Terry thought he heard him say something .\"},
+\"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Before the sound of
+the gunshot , before the Captain 's brains mixed with blood were spattered on to the instrument panel in front of him
+, Terry thought he heard him say something .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Ext\", \"core\": true, \"text\": \"During the re-entry and completion of BA-1 a large amount of brine was
+pumped into the well , carrying fines with it and plugging the pores around the well bore .\"}, \"target\": {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"During the re-entry and completion of BA-1
+a large amount of brine was pumped into the well , carrying fines with it and plugging the pores around the well bore
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"During the war it had been a dangerous neighbour , but no bomb had fallen on it , although fire-bombs
+had spattered all over Mouncy Street and Decimus Street .\"}, \"target\": {\"id\": \"1:Area\", \"FE\": \"Area\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"During the war it had been a dangerous neighbour , but no bomb had
+fallen on it , although fire-bombs had spattered all over Mouncy Street and Decimus Street .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"He felt cold ,
+thick fluid being splashed on him .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"He felt cold , thick fluid being splashed on him .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"He retched , thin vomit spattering on
+the floor .\"}, \"target\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\": true, \"text\": \"He
+retched , thin vomit spattering on the floor .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"His skin was bursting , stretched almost to transparency by
+the blood pumped down into it .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"His skin was bursting , stretched almost to transparency by the blood pumped down into it .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"His
+spunk had spattered over her lovely face , and large globules hung from her succulent red lips .\"}, \"target\":
+{\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Obj\", \"core\": true, \"text\": \"His spunk had spattered over her
+lovely face , and large globules hung from her succulent red lips .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Mowbray 's body crashed against the
+earth , his brains spattering as the sharp , icy cobbles crushed his skull .\"}, \"target\": {\"id\": \"1:Cause\",
+\"FE\": \"Cause\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Mowbray 's body crashed against the earth , his
+brains spattering as the sharp , icy cobbles crushed his skull .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"RED ink is splattered all over Britain
+'s companies .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\":
+\"RED ink is splattered all over Britain 's companies .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Rinse additive systems work by having a sensor linked to the
+rinse cycle actuator so that while rinse water is being pumped a metered dose of rinse additive is delivered .\"},
+\"target\": {\"id\": \"1:Cause\", \"FE\": \"Cause\", \"GF\": \"CNI\", \"core\": true, \"text\": \"Rinse additive
+systems work by having a sensor linked to the rinse cycle actuator so that while rinse water is being pumped a
+metered dose of rinse additive is delivered .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Something spattered all over his face : he put up his hand
+and his fingers came away red .\"}, \"target\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"Something spattered all over his face : he put up his hand and his fingers came away red .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The
+use of systemic fungicides sprayed onto potato crops , and fumigation of stored potatoes , can reduce the incidence
+of the disease but the spread of infection is greatly facilitated by modern harvesting equipment .\"}, \"target\":
+{\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"The use of systemic fungicides
+sprayed onto potato crops , and fumigation of stored potatoes , can reduce the incidence of the disease but the
+spread of infection is greatly facilitated by modern harvesting equipment .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"The white star-flowers of wild coffee
+spattered the banks and the feathery ballerina skirts of kapok shimmered with raindrops .\"}, \"target\": {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The white star-flowers of wild coffee
+spattered the banks and the feathery ballerina skirts of kapok shimmered with raindrops .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"There were 16
+cases of damage to vehicles including \\u00a3300 damage to a vehicle in Larchfield Street , while paint was sprayed
+over a vehicle in Rydal Road .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"There were 16 cases of damage to vehicles including \\u00a3300 damage to a vehicle in Larchfield
+Street , while paint was sprayed over a vehicle in Rydal Road .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"This amplification is produced at the expense of
+energy pumped into the medium via the population inversion of its atoms or molecules .\"}, \"target\": {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"This amplification is produced at the
+expense of energy pumped into the medium via the population inversion of its atoms or molecules .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Well , he
+supposedly had drink spilled on him by a coachman so , by way of revenge , he poured brandy over the man and ignited
+him .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Well , he
+supposedly had drink spilled on him by a coachman so , by way of revenge , he poured brandy over the man and ignited
+him .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"Well all the sort of chemicals that are sprayed onto crops , are used for food preservation , and there
+are a wide range of them .\"}, \"target\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"Well all the sort of chemicals that are sprayed onto crops , are used for food preservation , and there
+are a wide range of them .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\",
+\"core\": true, \"text\": \"When blood tests are taken , we use local anesthesia , sprayed on the skin .\"},
+\"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"When blood tests are
+taken , we use local anesthesia , sprayed on the skin .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"Wine was splashed from jug to cup and then often drained in
+one loud gulp .\"}, \"target\": {\"id\": \"1:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"Wine was splashed from jug to cup and then often drained in one loud gulp .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\": true, \"text\": \"` Another scene cut was one
+where a man 's brains are splattered over a window . \\\"\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"` Another scene cut was one where a man 's brains are splattered over a
+window . \\\"\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\", \"core\":
+true, \"text\": \"` Put it out , \\\" she screamed at Julie as another burst of fire from the UZI spattered the
+cottage .\"}, \"target\": {\"id\": \"1:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"`
+Put it out , \\\" she screamed at Julie as another burst of fire from the UZI spattered the cottage .\"}, \"count\":
+1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Beyond that ,
+you can usually buy extensions covering accidental damage to the buildings , eg ; by putting your foot through the
+bedroom ceiling , or to the contents , eg , by spilling paint on a carpet .\"}, \"target\": {\"id\": \"1:Goal\",
+\"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Beyond that , you can usually buy extensions covering
+accidental damage to the buildings , eg ; by putting your foot through the bedroom ceiling , or to the contents , eg
+, by spilling paint on a carpet .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"Fat Trask choked with laughter , spattering half-chewed pasta over another man
+who slapped him upside the head .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"Fat Trask choked with laughter , spattering half-chewed pasta over another man who slapped him
+upside the head .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"Gabriel shook his head furiously ; then hurried back to the Mason as fast as he could go without
+spilling the liquor .\"}, \"target\": {\"id\": \"1:Agent\", \"FE\": \"Agent\", \"GF\": \"DNI\", \"core\": true,
+\"text\": \"Gabriel shook his head furiously ; then hurried back to the Mason as fast as he could go without spilling
+the liquor .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"In this field , Iran 's research is concentrated in creating genes that produce toxins against
+insect pests ; improving the biological resistance of plants ; formulating new pesticides ; improving techniques of
+spraying or otherwise disseminating pesticides ; investigating the effects on native plant species after they have
+been introduced to various pests and diseases ; preventing the production of mycotoxins in crops ; producing plant
+viruses and their corresponding antiserums for an antiserum bank ; and manufacturing pheromones and hormones to
+combat arthropods that harm Iran 's agricultural industry .\"}, \"target\": {\"id\": \"1:Agent\", \"FE\": \"Agent\",
+\"GF\": \"CNI\", \"core\": true, \"text\": \"In this field , Iran 's research is concentrated in creating genes that
+produce toxins against insect pests ; improving the biological resistance of plants ; formulating new pesticides ;
+improving techniques of spraying or otherwise disseminating pesticides ; investigating the effects on native plant
+species after they have been introduced to various pests and diseases ; preventing the production of mycotoxins in
+crops ; producing plant viruses and their corresponding antiserums for an antiserum bank ; and manufacturing
+pheromones and hormones to combat arthropods that harm Iran 's agricultural industry .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"It was Barney who
+returned to it first , dribbling cream into his coffee and watching it swirl into a spiral on the surface .\"},
+\"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"It was Barney who
+returned to it first , dribbling cream into his coffee and watching it swirl into a spiral on the surface .\"},
+\"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"It
+was noisy , hot , smoky and the smell was of sweat and spilt beer overlaid with perfume and aftershave .\"},
+\"target\": {\"id\": \"1:Agent\", \"FE\": \"Agent\", \"GF\": \"INI\", \"core\": true, \"text\": \"It was noisy , hot
+, smoky and the smell was of sweat and spilt beer overlaid with perfume and aftershave .\"}, \"count\": 1},
+{\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"No matter how much
+Norse manure you splatter on to them , they 've a habit of coming up smelling of roses .\"}, \"target\": {\"id\":
+\"1:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"No matter how much Norse manure you
+splatter on to them , they 've a habit of coming up smelling of roses .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"0:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Simply spray Hot Shapes onto clean , dry
+hair before setting to get instant hold with a glossy finish .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"Simply spray Hot Shapes onto clean , dry hair before setting to get
+instant hold with a glossy finish .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"Splashing the liquid into a goblet , he carried the drink back to the bed and
+shoved it brusquely into Isabel 's hand .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"Splashing the liquid into a goblet , he carried the drink back to the bed and shoved it
+brusquely into Isabel 's hand .\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"` When you 've got it full up to the top , splash a bit of Paraffin on the top
+and put the match to it .\"}, \"target\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"` When you 've got it full up to the top , splash a bit of Paraffin on the top and put the match to it
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"0:Goal\", \"FE\": \"Goal\", \"GF\": \"Ext\", \"core\": true, \"text\":
+\"Some of them were spattered with blood from the carcasses that hung on a row of meat-hooks nearby .\"}, \"target\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Some of them were spattered
+with blood from the carcasses that hung on a row of meat-hooks nearby .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"In this field , Iran 's research is
+concentrated in creating genes that produce toxins against insect pests ; improving the biological resistance of
+plants ; formulating new pesticides ; improving techniques of spraying or otherwise disseminating pesticides ;
+investigating the effects on native plant species after they have been introduced to various pests and diseases ;
+preventing the production of mycotoxins in crops ; producing plant viruses and their corresponding antiserums for an
+antiserum bank ; and manufacturing pheromones and hormones to combat arthropods that harm Iran 's agricultural
+industry .\"}, \"target\": {\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\": \"INI\", \"core\": true, \"text\": \"In
+this field , Iran 's research is concentrated in creating genes that produce toxins against insect pests ; improving
+the biological resistance of plants ; formulating new pesticides ; improving techniques of spraying or otherwise
+disseminating pesticides ; investigating the effects on native plant species after they have been introduced to
+various pests and diseases ; preventing the production of mycotoxins in crops ; producing plant viruses and their
+corresponding antiserums for an antiserum bank ; and manufacturing pheromones and hormones to combat arthropods that
+harm Iran 's agricultural industry .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Agent\", \"FE\": \"Agent\", \"GF\":
+\"DNI\", \"core\": true, \"text\": \"Gabriel shook his head furiously ; then hurried back to the Mason as fast as he
+could go without spilling the liquor .\"}, \"target\": {\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\": \"INI\",
+\"core\": true, \"text\": \"Gabriel shook his head furiously ; then hurried back to the Mason as fast as he could go
+without spilling the liquor .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Agent\", \"FE\": \"Agent\", \"GF\":
+\"Ext\", \"core\": true, \"text\": \"A milkman has been temporarily blinded by two men who sprayed superglue into his
+eyes .\"}, \"target\": {\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"A
+milkman has been temporarily blinded by two men who sprayed superglue into his eyes .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Agent\", \"FE\": \"Agent\", \"GF\": \"Ext\", \"core\": true, \"text\": \"No matter how much Norse manure
+you splatter on to them , they 've a habit of coming up smelling of roses .\"}, \"target\": {\"id\": \"2:Goal\",
+\"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"No matter how much Norse manure you splatter on to
+them , they 've a habit of coming up smelling of roses .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Agent\",
+\"FE\": \"Agent\", \"GF\": \"INI\", \"core\": true, \"text\": \"It was noisy , hot , smoky and the smell was of sweat
+and spilt beer overlaid with perfume and aftershave .\"}, \"target\": {\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\":
+\"INI\", \"core\": true, \"text\": \"It was noisy , hot , smoky and the smell was of sweat and spilt beer overlaid
+with perfume and aftershave .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"As they drew closer , they could see that the sides of the surrounding containers were
+covered with a gleaming wetness , spattered to a height a few feet above their heads .\"}, \"target\": {\"id\":
+\"2:Cause\", \"FE\": \"Cause\", \"GF\": \"CNI\", \"core\": true, \"text\": \"As they drew closer , they could see
+that the sides of the surrounding containers were covered with a gleaming wetness , spattered to a height a few feet
+above their heads .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"During the war it had been a dangerous neighbour , but no bomb had fallen on it , although
+fire-bombs had spattered all over Mouncy Street and Decimus Street .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\":
+\"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"During the war it had been a dangerous neighbour , but no
+bomb had fallen on it , although fire-bombs had spattered all over Mouncy Street and Decimus Street .\"}, \"count\":
+1}, {\"source\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\": true, \"text\": \"He retched ,
+thin vomit spattering on the floor .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"DNI\",
+\"core\": true, \"text\": \"He retched , thin vomit spattering on the floor .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Something spattered all over his
+face : he put up his hand and his fingers came away red .\"}, \"target\": {\"id\": \"2:Cause\", \"FE\": \"Cause\",
+\"GF\": \"INI\", \"core\": true, \"text\": \"Something spattered all over his face : he put up his hand and his
+fingers came away red .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"And that was restrained compared with the green pantiles , Spanish ironwork , provenl
+shutters and stained-glass leaded windows spattered along the rest of the road .\"}, \"target\": {\"id\":
+\"2:Agent\", \"FE\": \"Agent\", \"GF\": \"INI\", \"core\": true, \"text\": \"And that was restrained compared with
+the green pantiles , Spanish ironwork , provenl shutters and stained-glass leaded windows spattered along the rest of
+the road .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Area\", \"FE\": \"Area\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"Bright little bunches of cherries or grapes splashed their large hats with colour .\"}, \"target\":
+{\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Bright little bunches of
+cherries or grapes splashed their large hats with colour .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Area\",
+\"FE\": \"Area\", \"GF\": \"Obj\", \"core\": true, \"text\": \"His spunk had spattered over her lovely face , and
+large globules hung from her succulent red lips .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\":
+\"CNI\", \"core\": true, \"text\": \"His spunk had spattered over her lovely face , and large globules hung from her
+succulent red lips .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Cause\", \"FE\": \"Cause\", \"GF\": \"CNI\",
+\"core\": true, \"text\": \"Rinse additive systems work by having a sensor linked to the rinse cycle actuator so that
+while rinse water is being pumped a metered dose of rinse additive is delivered .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"INI\", \"core\": true, \"text\": \"Rinse additive systems work by having a
+sensor linked to the rinse cycle actuator so that while rinse water is being pumped a metered dose of rinse additive
+is delivered .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Cause\", \"FE\": \"Cause\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"Mowbray 's body crashed against the earth , his brains spattering as the sharp , icy cobbles
+crushed his skull .\"}, \"target\": {\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\": \"INI\", \"core\": true, \"text\":
+\"Mowbray 's body crashed against the earth , his brains spattering as the sharp , icy cobbles crushed his skull
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Cause\", \"FE\": \"Cause\", \"GF\": \"Ext\", \"core\": true,
+\"text\": \"During the engagement A.A. bursts were exploding all round me , my port plane received a near miss which
+made a large hole and spattered the aircraft with splinters , which injured my left elbow . \\\"\"}, \"target\":
+{\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"During the engagement A.A. bursts
+were exploding all round me , my port plane received a near miss which made a large hole and spattered the aircraft
+with splinters , which injured my left elbow . \\\"\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Some of them were spattered with blood from the carcasses
+that hung on a row of meat-hooks nearby .\"}, \"target\": {\"id\": \"2:Source\", \"FE\": \"Source\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"Some of them were spattered with blood from the carcasses that hung on a row of
+meat-hooks nearby .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Ext\",
+\"core\": true, \"text\": \"It was night , and as the wind gusted down the iron chimney pipe , a shower of metal
+flakes spattered on to the wooden floor .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"It was night , and as the wind gusted down the iron chimney pipe , a shower of metal
+flakes spattered on to the wooden floor .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Ext\", \"core\": true, \"text\": \"Well all the sort of chemicals that are sprayed onto crops , are used
+for food preservation , and there are a wide range of them .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"Well all the sort of chemicals that are sprayed onto crops , are used
+for food preservation , and there are a wide range of them .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"A handsome Irish youth with ginger hair squirted some
+boiling water into the teapot and swilled a cup of dark brown liquid into a chipped cup .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"A handsome Irish youth with ginger hair
+squirted some boiling water into the teapot and swilled a cup of dark brown liquid into a chipped cup .\"},
+\"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"A
+valuable way of concealing them is to have bars , stripes or blobs of colour that appear to overflow from one section
+to the next , as though someone has splashed ink across the animal .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"A valuable way of concealing them is to have bars , stripes or
+blobs of colour that appear to overflow from one section to the next , as though someone has splashed ink across the
+animal .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"Anemones tend to dribble a little water from their centres if you press them .\"}, \"target\": {\"id\":
+\"2:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Anemones tend to dribble a little
+water from their centres if you press them .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"Angry farmer sprays muck on a council\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Angry farmer sprays muck on a council\"},
+\"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\":
+\"At that moment a youth sprinted past , tipped over her glass and splattered the tomato juice across the concrete
+.\"}, \"target\": {\"id\": \"2:Path\", \"FE\": \"Path\", \"GF\": \"Dep\", \"core\": true, \"text\": \"At that
+moment a youth sprinted past , tipped over her glass and splattered the tomato juice across the concrete .\"},
+\"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\":
+\"Baron de Tracy grinned openly and grabbed a drinking-horn , splashing some wine into it from the jug on the table
+.\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Baron de Tracy
+grinned openly and grabbed a drinking-horn , splashing some wine into it from the jug on the table .\"}, \"count\":
+1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Battling Dave
+Cannon sprayed a whole trailer-load of the cow muck over a council building after plans for his retirement bungalow
+were turned down for the fourth time .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"Battling Dave Cannon sprayed a whole trailer-load of the cow muck over a council building
+after plans for his retirement bungalow were turned down for the fourth time .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Betty watched him as he
+splashed a little soda in each , and handed her one .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\":
+\"Dep\", \"core\": true, \"text\": \"Betty watched him as he splashed a little soda in each , and handed her one
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\":
+\"Brandon then told one of the other group : ` Order your food and leave if you do n't want trouble , or I 'll
+splatter your face across the road . \\\"\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"Brandon then told one of the other group : ` Order your food and leave if you do n't want
+trouble , or I 'll splatter your face across the road . \\\"\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Carter toppled over and lay pumping his blood onto
+the canteen floor .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"Carter toppled over and lay pumping his blood onto the canteen floor .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Cupping his hands in the large jug , he
+splashed cold water over his face and chest , rubbing it up and down his arms before towelling himself down .\"},
+\"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Cupping his hands in
+the large jug , he splashed cold water over his face and chest , rubbing it up and down his arms before towelling
+himself down .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"Eddie splashed more of the liquid against his temples , brushing it back and then rubbing it in
+with a comb .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"Eddie splashed more of the liquid against his temples , brushing it back and then rubbing it in with a comb .\"},
+\"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\":
+\"Edward lifted it and splashed a little water into the teapot , swirling it around .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Edward lifted it and splashed a little
+water into the teapot , swirling it around .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"Emergency crews were called to pump water from 7 houses .\"},
+\"target\": {\"id\": \"2:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Emergency crews
+were called to pump water from 7 houses .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"Farmers in the region are not allowed to spray manure over the surface
+of their fields .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"Farmers in the region are not allowed to spray manure over the surface of their fields .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"For many of them ,
+the classroom will be the first place where they are able to play with water and even spill it on the floor without
+incurring an adult 's displeasure .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"For many of them , the classroom will be the first place where they are able to play with water and
+even spill it on the floor without incurring an adult 's displeasure .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"He crouched behind the mother to squirt
+milk into the bottle .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"He crouched behind the mother to squirt milk into the bottle .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"He shook his head , spraying drops over
+the room , over his clothes discarded on the floor .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\":
+\"Dep\", \"core\": true, \"text\": \"He shook his head , spraying drops over the room , over his clothes discarded on
+the floor .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"He splashed some down the front of my tunic and was gone .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"He splashed some down the front of my tunic and was gone
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"He splashed whiskey into the glasses .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\":
+\"Dep\", \"core\": true, \"text\": \"He splashed whiskey into the glasses .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"He unswung the machine-gun and sprayed
+ the bullets into the trees , sending his hunters scattering for cover .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"He unswung the machine-gun and sprayed the bullets into the
+trees , sending his hunters scattering for cover .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"However , its task is made much more difficult by the fact
+that derogations granted to the Welsh water authority allow it to pump raw sewage into both those rivers .\"},
+\"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"However , its task is
+made much more difficult by the fact that derogations granted to the Welsh water authority allow it to pump raw
+sewage into both those rivers .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"However , once the salt fingers are formed , they are pumping salty fluid into
+the top of the bottom layer and less salty fluid into the bottom of the top layer .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"However , once the salt fingers are formed
+, they are pumping salty fluid into the top of the bottom layer and less salty fluid into the bottom of the top layer
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"I splashed more over my face .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"I splashed more over my face .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"I splashed water over my face , slicked unruly grey
+hair into a more reasonable disorder , and headed down to the lobby again .\"}, \"target\": {\"id\": \"2:Goal\",
+\"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"I splashed water over my face , slicked unruly grey
+hair into a more reasonable disorder , and headed down to the lobby again .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"In fact , she thought as she splashed
+cold water on to her hot face , she had n't seen him all morning -- perhaps he 'd taken himself off for a walk .\"},
+\"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"In fact , she thought
+as she splashed cold water on to her hot face , she had n't seen him all morning -- perhaps he 'd taken himself off
+for a walk .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"It is a superbly efficient food gatherer , and can siphon ten gallons of water at a single suck and
+squirt this into the elephant 's mouth .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"It is a superbly efficient food gatherer , and can siphon ten gallons of water at a
+single suck and squirt this into the elephant 's mouth .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Jenna jumped up , almost spilling her coffee , making
+a hasty grab for the delicate cup and amusing him even more .\"}, \"target\": {\"id\": \"2:Area\", \"FE\": \"Area\",
+\"GF\": \"INI\", \"core\": true, \"text\": \"Jenna jumped up , almost spilling her coffee , making a hasty grab for
+the delicate cup and amusing him even more .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"Mojo shook the thing fiercely , spraying ink over the station head
+.\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Mojo shook the
+thing fiercely , spraying ink over the station head .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"My hand jerked so that I almost spilled my wine .\"},
+\"target\": {\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\": \"INI\", \"core\": true, \"text\": \"My hand jerked so
+that I almost spilled my wine .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"Needing something light and refreshing to slake a newly parched mouth and throat
+, she squirted soda from a siphon into a tall glass and added a cluster of ice cubes .\"}, \"target\": {\"id\":
+\"2:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Needing something light and refreshing
+to slake a newly parched mouth and throat , she squirted soda from a siphon into a tall glass and added a cluster of
+ice cubes .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"One possibility being considered is for solar power to be used to pump downstream water back up to the
+main reservoir , so restoring the head of water needed to generate hydro-electric power .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"One possibility being considered is for
+solar power to be used to pump downstream water back up to the main reservoir , so restoring the head of water needed
+to generate hydro-electric power .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"Rainbow jumps , spilling coffee all over the table and herself .\"}, \"target\":
+{\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Rainbow jumps , spilling coffee
+all over the table and herself .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"She splashed water on her face , wishing she had her overnight case up here with
+her , wondering if it would be possible to make a deal with Ace .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"She splashed water on her face , wishing she had her overnight
+case up here with her , wondering if it would be possible to make a deal with Ace .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"So Daedalus is squirting one
+such solution through small round nozzles into the other .\"}, \"target\": {\"id\": \"2:Path\", \"FE\": \"Path\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"So Daedalus is squirting one such solution through small round nozzles
+into the other .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"Some female handed them a hypo-bulb and they sprayed it into Jezrael 's face , and there was a
+physical paralysis leadening her without physical pain .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"Some female handed them a hypo-bulb and they sprayed it into Jezrael 's
+face , and there was a physical paralysis leadening her without physical pain .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The Church of England vicar
+blessed the Northamp stately home , splashed holy water on the walls and said prayers to ward off the spirit .\"},
+\"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"The Church of England
+vicar blessed the Northamp stately home , splashed holy water on the walls and said prayers to ward off the spirit
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\":
+\"The HEART pumps blood around the body .\"}, \"target\": {\"id\": \"2:Area\", \"FE\": \"Area\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"The HEART pumps blood around the body .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The Suffolk Water Company is pumping
+specially dechlorinated water into the habitat of the fen raft spider , Britain 's largest and rarest , to save it
+from extinction .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"The Suffolk Water Company is pumping specially dechlorinated water into the habitat of the fen raft spider ,
+Britain 's largest and rarest , to save it from extinction .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The combat unit had sprayed napalm or some napalm
+analogue into the Silver Shuriken , and he was clothed in fire .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"The combat unit had sprayed napalm or some napalm analogue
+into the Silver Shuriken , and he was clothed in fire .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The extreme force of the blows had splashed blood on the
+walls and ceilings .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"The extreme force of the blows had splashed blood on the walls and ceilings .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The flak batteries
+would be waiting to pump their filth all over the sky .\"}, \"target\": {\"id\": \"2:Area\", \"FE\": \"Area\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"The flak batteries would be waiting to pump their filth all over the sky
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"The following week tests were carried out and I went with Dad to watch the Brigade endeavouring to pump
+water to the roof of Blooms the Drapers on The Canal -- possibly the City 's tallest building .\"}, \"target\":
+{\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"The following week tests were
+carried out and I went with Dad to watch the Brigade endeavouring to pump water to the roof of Blooms the Drapers on
+The Canal -- possibly the City 's tallest building .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The longer we continue to pump lead into the atmosphere , the
+more it will accumulate .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"The longer we continue to pump lead into the atmosphere , the more it will accumulate .\"}, \"count\":
+1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The priest
+took the basin of blood and spattered it against the altar .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"The priest took the basin of blood and spattered it against the altar
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\":
+\"The system works by pumping liquid ink from a reservoir to the tip of a very fine jet .\"}, \"target\": {\"id\":
+\"2:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"The system works by pumping liquid
+ ink from a reservoir to the tip of a very fine jet .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\":
+\"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The tank itself could split , spilling fuel over the boat
+and leaving none left to get home ! 3 .\"}, \"target\": {\"id\": \"2:Path\", \"FE\": \"Path\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"The tank itself could split , spilling fuel over the boat and leaving none left to get
+home ! 3 .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"They sprayed cold water on my dog when it was snowing and all her fur froze .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"They sprayed cold water on my dog when it
+was snowing and all her fur froze .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"They will pump waste water to an existing sewer at Crosby Road South and then to
+North West Water 's multimillion pound treatment works at Sandon Dock .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"They will pump waste water to an existing sewer at Crosby Road
+South and then to North West Water 's multimillion pound treatment works at Sandon Dock .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"This has been open
+to doubt since June 8 , 1989 when an extreme left-wing group pumped 20 bullets into Valenzuela 's former chief , `
+Wally \\\" Fuentes Morrison .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"This has been open to doubt since June 8 , 1989 when an extreme left-wing group pumped 20 bullets into
+Valenzuela 's former chief , ` Wally \\\" Fuentes Morrison .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"This scholar dribbling tea\"}, \"target\": {\"id\":
+\"2:Area\", \"FE\": \"Area\", \"GF\": \"DNI\", \"core\": true, \"text\": \"This scholar dribbling tea\"}, \"count\":
+1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Vital messages
+from the brain to the body slow down and nerves in the heart , sensing something is wrong , react by instructing the
+heart to pump extra blood to the brain .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"Vital messages from the brain to the body slow down and nerves in the heart , sensing
+something is wrong , react by instructing the heart to pump extra blood to the brain .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"Watching the Turks
+spray it around the park against our implacable foes , the English recently , the mystery deepened as to how we
+managed to knock in five goals against them at Lansdowne Road .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Watching the Turks spray it around the park against our
+implacable foes , the English recently , the mystery deepened as to how we managed to knock in five goals against
+them at Lansdowne Road .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"We ca n't blame them that vandals spray paint on the walls .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"We ca n't blame them that vandals spray
+paint on the walls .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"When he saw us he choked and sprayed the beer onto the lawn .\"}, \"target\": {\"id\":
+\"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"When he saw us he choked and sprayed the
+beer onto the lawn .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\",
+\"core\": true, \"text\": \"Willie , whose stomach had been steadily growing tighter , almost spilt his tea over his
+shorts .\"}, \"target\": {\"id\": \"2:Path\", \"FE\": \"Path\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Willie ,
+whose stomach had been steadily growing tighter , almost spilt his tea over his shorts .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"` Bastard ! \\\"
+cried Bernard , belabouring Jed with his fists , splattering cheap red wine over books and walls .\"}, \"target\":
+{\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"` Bastard ! \\\" cried Bernard ,
+belabouring Jed with his fists , splattering cheap red wine over books and walls .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"A man who had superglue squirted
+in his face by muggers may have lost the sight of one eye .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"A man who had superglue squirted in his face by muggers may have lost
+the sight of one eye .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"A milkman who was temporarily blinded when superglue was squirted into his eyes , has
+given up his job .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true,
+\"text\": \"A milkman who was temporarily blinded when superglue was squirted into his eyes , has given up his job
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"A third of sewage pumped into the sea is untreated .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\",
+\"GF\": \"CNI\", \"core\": true, \"text\": \"A third of sewage pumped into the sea is untreated .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"And he would be
+thinking of her , and wanting her , and watching the raindrops as they spattered against the window .\"}, \"target\":
+{\"id\": \"2:Cause\", \"FE\": \"Cause\", \"GF\": \"CNI\", \"core\": true, \"text\": \"And he would be thinking of her
+, and wanting her , and watching the raindrops as they spattered against the window .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Before the sound of the gunshot ,
+before the Captain 's brains mixed with blood were spattered on to the instrument panel in front of him , Terry
+thought he heard him say something .\"}, \"target\": {\"id\": \"2:Cause\", \"FE\": \"Cause\", \"GF\": \"CNI\",
+\"core\": true, \"text\": \"Before the sound of the gunshot , before the Captain 's brains mixed with blood were
+spattered on to the instrument panel in front of him , Terry thought he heard him say something .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Beyond that , you
+can usually buy extensions covering accidental damage to the buildings , eg ; by putting your foot through the
+bedroom ceiling , or to the contents , eg , by spilling paint on a carpet .\"}, \"target\": {\"id\": \"2:Agent\",
+\"FE\": \"Agent\", \"GF\": \"DNI\", \"core\": true, \"text\": \"Beyond that , you can usually buy extensions covering
+accidental damage to the buildings , eg ; by putting your foot through the bedroom ceiling , or to the contents , eg
+, by spilling paint on a carpet .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\":
+\"Dep\", \"core\": true, \"text\": \"During the re-entry and completion of BA-1 a large amount of brine was pumped
+into the well , carrying fines with it and plugging the pores around the well bore .\"}, \"target\": {\"id\":
+\"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"During the re-entry and completion of
+BA-1 a large amount of brine was pumped into the well , carrying fines with it and plugging the pores around the well
+bore .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"Fat Trask choked with laughter , spattering half-chewed pasta over another man who slapped him upside the
+head .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"Fat
+Trask choked with laughter , spattering half-chewed pasta over another man who slapped him upside the head .\"},
+\"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"He
+felt cold , thick fluid being splashed on him .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\":
+\"CNI\", \"core\": true, \"text\": \"He felt cold , thick fluid being splashed on him .\"}, \"count\": 1},
+{\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"His skin was
+bursting , stretched almost to transparency by the blood pumped down into it .\"}, \"target\": {\"id\": \"2:Cause\",
+\"FE\": \"Cause\", \"GF\": \"CNI\", \"core\": true, \"text\": \"His skin was bursting , stretched almost to
+transparency by the blood pumped down into it .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"It was Barney who returned to it first , dribbling cream into
+his coffee and watching it swirl into a spiral on the surface .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\":
+\"Agent\", \"GF\": \"DNI\", \"core\": true, \"text\": \"It was Barney who returned to it first , dribbling cream into
+his coffee and watching it swirl into a spiral on the surface .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\",
+\"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Simply spray Hot Shapes onto clean , dry hair before
+setting to get instant hold with a glossy finish .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\":
+\"CNI\", \"core\": true, \"text\": \"Simply spray Hot Shapes onto clean , dry hair before setting to get instant hold
+with a glossy finish .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"Splashing the liquid into a goblet , he carried the drink back to the bed and shoved it
+brusquely into Isabel 's hand .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\":
+true, \"text\": \"Splashing the liquid into a goblet , he carried the drink back to the bed and shoved it brusquely
+into Isabel 's hand .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"The use of systemic fungicides sprayed onto potato crops , and fumigation of stored
+potatoes , can reduce the incidence of the disease but the spread of infection is greatly facilitated by modern
+harvesting equipment .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true,
+\"text\": \"The use of systemic fungicides sprayed onto potato crops , and fumigation of stored potatoes , can reduce
+the incidence of the disease but the spread of infection is greatly facilitated by modern harvesting equipment .\"},
+\"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"There
+were 16 cases of damage to vehicles including \\u00a3300 damage to a vehicle in Larchfield Street , while paint was
+sprayed over a vehicle in Rydal Road .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\",
+\"core\": true, \"text\": \"There were 16 cases of damage to vehicles including \\u00a3300 damage to a vehicle in
+Larchfield Street , while paint was sprayed over a vehicle in Rydal Road .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"This amplification is produced at the
+expense of energy pumped into the medium via the population inversion of its atoms or molecules .\"}, \"target\":
+{\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"This amplification is produced
+at the expense of energy pumped into the medium via the population inversion of its atoms or molecules .\"},
+\"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Well
+, he supposedly had drink spilled on him by a coachman so , by way of revenge , he poured brandy over the man and
+ignited him .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"Well , he supposedly had drink spilled on him by a coachman so , by way of revenge , he poured brandy over the man
+and ignited him .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"When blood tests are taken , we use local anesthesia , sprayed on the skin .\"}, \"target\":
+{\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"When blood tests are taken , we
+use local anesthesia , sprayed on the skin .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"` Another scene cut was one where a man 's brains are splattered over a
+window . \\\"\"}, \"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"`
+Another scene cut was one where a man 's brains are splattered over a window . \\\"\"}, \"count\": 1}, {\"source\":
+{\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"` When you 've got it full up to
+the top , splash a bit of Paraffin on the top and put the match to it .\"}, \"target\": {\"id\": \"2:Agent\", \"FE\":
+\"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"` When you 've got it full up to the top , splash a bit of
+Paraffin on the top and put the match to it .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"For a moment she looked furiously at Donald , her teeth bared like a cat
+'s , then she shook her hair out , spattering Donald with bree and barley , and hauled him back into the dance .\"},
+\"target\": {\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"For a moment she
+looked furiously at Donald , her teeth bared like a cat 's , then she shook her hair out , spattering Donald with
+bree and barley , and hauled him back into the dance .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"His friends carry his rigid , moaning body to one side and an
+older woman splashes him with water .\"}, \"target\": {\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Dep\",
+\"core\": true, \"text\": \"His friends carry his rigid , moaning body to one side and an older woman splashes him
+with water .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"Luck playing a somewhat greater part in the matter than judgement , the bullet struck him in the calf ,
+tore through the muscles there and exited , spattering the wall behind with blood and pink tissue .\"}, \"target\":
+{\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Luck playing a somewhat greater
+part in the matter than judgement , the bullet struck him in the calf , tore through the muscles there and exited ,
+spattering the wall behind with blood and pink tissue .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"RED ink is splattered all over Britain 's companies .\"},
+\"target\": {\"id\": \"2:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true, \"text\": \"RED ink is
+splattered all over Britain 's companies .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Obj\", \"core\": true, \"text\": \"She came down heavily , spattering her nightdress with earth , shards of
+flowerpot , dark streaks of water from spilled asters .\"}, \"target\": {\"id\": \"2:Fluid\", \"FE\": \"Fluid\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"She came down heavily , spattering her nightdress with earth , shards of
+flowerpot , dark streaks of water from spilled asters .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"The white star-flowers of wild coffee spattered the banks and
+the feathery ballerina skirts of kapok shimmered with raindrops .\"}, \"target\": {\"id\": \"2:Cause\", \"FE\":
+\"Cause\", \"GF\": \"CNI\", \"core\": true, \"text\": \"The white star-flowers of wild coffee spattered the banks and
+the feathery ballerina skirts of kapok shimmered with raindrops .\"}, \"count\": 1}, {\"source\": {\"id\":
+\"1:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"When she and Frank were children , they
+used to skip the puddles , or sometimes land in the middle , spattering themselves , with shouts of glee .\"},
+\"target\": {\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"DNI\", \"core\": true, \"text\": \"When she and Frank
+were children , they used to skip the puddles , or sometimes land in the middle , spattering themselves , with shouts
+of glee .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Path\", \"FE\": \"Path\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"This in turn helps your body to pump out toxins and excess fluid .\"}, \"target\": {\"id\": \"2:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true, \"text\": \"This in turn helps your body to pump out toxins and
+excess fluid .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\":
+true, \"text\": \"Wine was splashed from jug to cup and then often drained in one loud gulp .\"}, \"target\":
+{\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Wine was splashed from jug to cup
+and then often drained in one loud gulp .\"}, \"count\": 1}, {\"source\": {\"id\": \"1:Source\", \"FE\": \"Source\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"` Put it out , \\\" she screamed at Julie as another burst of fire from
+the UZI spattered the cottage .\"}, \"target\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\":
+true, \"text\": \"` Put it out , \\\" she screamed at Julie as another burst of fire from the UZI spattered the
+cottage .\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Fluid\", \"FE\": \"Fluid\", \"GF\": \"Obj\", \"core\": true,
+\"text\": \"A milkman has been temporarily blinded by two men who sprayed superglue into his eyes .\"}, \"target\":
+{\"id\": \"3:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"A milkman has been temporarily
+blinded by two men who sprayed superglue into his eyes .\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Baron de Tracy grinned openly and grabbed a drinking-horn ,
+splashing some wine into it from the jug on the table .\"}, \"target\": {\"id\": \"3:Source\", \"FE\": \"Source\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"Baron de Tracy grinned openly and grabbed a drinking-horn , splashing
+some wine into it from the jug on the table .\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"Well all the sort of chemicals that are sprayed onto crops , are used
+for food preservation , and there are a wide range of them .\"}, \"target\": {\"id\": \"3:Agent\", \"FE\": \"Agent\",
+\"GF\": \"CNI\", \"core\": true, \"text\": \"Well all the sort of chemicals that are sprayed onto crops , are used
+for food preservation , and there are a wide range of them .\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Goal\",
+\"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Wine was splashed from jug to cup and then often
+drained in one loud gulp .\"}, \"target\": {\"id\": \"3:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true,
+\"text\": \"Wine was splashed from jug to cup and then often drained in one loud gulp .\"}, \"count\": 1},
+{\"source\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\": \"Obj\", \"core\": true, \"text\": \"During the
+engagement A.A. bursts were exploding all round me , my port plane received a near miss which made a large hole and
+spattered the aircraft with splinters , which injured my left elbow . \\\"\"}, \"target\": {\"id\": \"3:Fluid\",
+\"FE\": \"Fluid\", \"GF\": \"Dep\", \"core\": true, \"text\": \"During the engagement A.A. bursts were exploding all
+round me , my port plane received a near miss which made a large hole and spattered the aircraft with splinters ,
+which injured my left elbow . \\\"\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Goal\", \"FE\": \"Goal\", \"GF\":
+\"Obj\", \"core\": true, \"text\": \"` Put it out , \\\" she screamed at Julie as another burst of fire from the UZI
+spattered the cottage .\"}, \"target\": {\"id\": \"3:Agent\", \"FE\": \"Agent\", \"GF\": \"CNI\", \"core\": true,
+\"text\": \"` Put it out , \\\" she screamed at Julie as another burst of fire from the UZI spattered the cottage
+.\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Path\", \"FE\": \"Path\", \"GF\": \"Dep\", \"core\": true, \"text\":
+\"At that moment a youth sprinted past , tipped over her glass and splattered the tomato juice across the concrete
+.\"}, \"target\": {\"id\": \"3:Goal\", \"FE\": \"Goal\", \"GF\": \"DNI\", \"core\": true, \"text\": \"At that moment
+a youth sprinted past , tipped over her glass and splattered the tomato juice across the concrete .\"}, \"count\":
+1}, {\"source\": {\"id\": \"2:Path\", \"FE\": \"Path\", \"GF\": \"Dep\", \"core\": true, \"text\": \"So Daedalus is
+squirting one such solution through small round nozzles into the other .\"}, \"target\": {\"id\": \"3:Goal\", \"FE\":
+\"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"So Daedalus is squirting one such solution through small
+round nozzles into the other .\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Source\", \"FE\": \"Source\", \"GF\":
+\"Dep\", \"core\": true, \"text\": \"Needing something light and refreshing to slake a newly parched mouth and throat
+, she squirted soda from a siphon into a tall glass and added a cluster of ice cubes .\"}, \"target\": {\"id\":
+\"3:Goal\", \"FE\": \"Goal\", \"GF\": \"Dep\", \"core\": true, \"text\": \"Needing something light and refreshing to
+slake a newly parched mouth and throat , she squirted soda from a siphon into a tall glass and added a cluster of ice
+cubes .\"}, \"count\": 1}, {\"source\": {\"id\": \"2:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true,
+\"text\": \"Some of them were spattered with blood from the carcasses that hung on a row of meat-hooks nearby .\"},
+\"target\": {\"id\": \"3:Cause\", \"FE\": \"Cause\", \"GF\": \"INI\", \"core\": true, \"text\": \"Some of them were
+spattered with blood from the carcasses that hung on a row of meat-hooks nearby .\"}, \"count\": 1}, {\"source\":
+{\"id\": \"2:Source\", \"FE\": \"Source\", \"GF\": \"Dep\", \"core\": true, \"text\": \"The system works by pumping
+liquid ink from a reservoir to the tip of a very fine jet .\"}, \"target\": {\"id\": \"3:Goal\", \"FE\": \"Goal\",
+\"GF\": \"Dep\", \"core\": true, \"text\": \"The system works by pumping liquid ink from a reservoir to the tip of a
+very fine jet .\"}, \"count\": 1}]}"

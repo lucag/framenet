@@ -4,7 +4,6 @@ from framenet.data.annotation import Graph, Pattern, annoset_for, get_frame_df, 
 from framenet.ecg.generation import TestTree, unstack
 from framenet.util import cata
 
-
 def test_type():
     a  = ecg.Type('a',  [])
     b1 = ecg.Type('b1', [a])
