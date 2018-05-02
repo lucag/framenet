@@ -1,7 +1,7 @@
 """Pattern matching-related stuff."""
 from functools import reduce
 from pprint         import pprint, pformat
-from typing         import NamedTuple, List, Tuple, Dict, Callable, Union, Any
+from typing import NamedTuple, List, Tuple, Dict, Callable, Union, Any, Set
 from framenet.util  import flatten, flatmap, singleton
 
 
@@ -27,6 +27,7 @@ class Pattern:
             return True
 
 
+# TODO: Need ε transitions!
 class Lexer:
     """A simple, immutable dictionary.
 
@@ -62,36 +63,11 @@ class Lexer:
         return type(other) is Lexer and other._items == self._items
 
 
-# TODO: Hide this? No.
-def mergemany(ls1: Tuple[Lexer, ...], ls2: Tuple[Lexer, ...], debug=False) -> Tuple[Lexer, ...]:
-    ls1, ls2 = map(maybe_force, (ls1, ls2))
-
-    if debug: print(f'mergemany({ls1}, {ls2})')
-
-    if not ls1:
-        return ls2
-    elif not ls2:
-        return ls1
-    else:
-        (l1, *r1), (l2, *r2) = ls1, ls2
-        if l1 != l2:
-            return (merge(l1, l2, debug),) + mergemany(tuple(r1), tuple(r2), debug)
-        else:
-            return (l1,) + mergemany(tuple(r1), tuple(r2), debug)
-
-
-import traceback as tb
-
-def callers():
-    frame = tb.extract_stack()
-    return [f'{fname}:{ln}' for (_1, ln, fname, text) in frame]
-
-
 class Thunk:
     __unk__ = "__unk__"
     __str__ = __repr__ = lambda self: f"Thunk({'?' if self.v is Thunk.__unk__ else self.v!r})"
 
-    def __init__(self, f, debug=False):
+    def __init__(self, f, debug=True):
         self.f, self.v, self.debug  = f, Thunk.__unk__, debug
 
     def __call__(self):
@@ -108,11 +84,43 @@ class Thunk:
         return v
 
 
-# @dispatch(Lexer, Lexer)
-def merge(l1: Union[Lexer, Thunk], l2: Union[Lexer, Thunk], debug=False) -> Lexer:
-    l1, l2 = map(maybe_force, (l1, l2))
+LexerOrThunk = Union[Lexer, Thunk]
 
-    if debug: print(f'merge({l1}, {l2})')
+def mergemany(ls1: Set[LexerOrThunk], ls2: Set[LexerOrThunk], seen, debug=False) -> Tuple[Lexer, ...]:
+    # ls1, ls2 = [maybe_force(l) for l in ls1], [maybe_force(l) for l in ls2]
+
+    if debug: print(f'mergemany({ls1}, {ls2})')
+
+    if not ls1:
+        return tuple(ls2)
+    elif not ls2:
+        return tuple(ls1)
+    else:
+        (l1, *r1), (l2, *r2) = ls1, ls2
+        if l1 != l2:
+            return (merge(l1, l2, seen=seen, debug=debug),) + mergemany(set(r1), set(r2), seen=seen, debug=debug)
+        else:
+            return (l1,) + mergemany(set(r1), set(r2), seen=seen, debug=debug)
+
+
+import traceback as tb
+
+def callers():
+    frame = tb.extract_stack()
+    return [f'{fname}:{ln}' for (_1, ln, fname, text) in frame]
+
+
+def mapv(f, *xs):
+    return map(f, xs)
+
+# @dispatch(Lexer, Lexer)
+def merge(l1: LexerOrThunk, l2: LexerOrThunk, seen=None, debug=False) -> Lexer:
+    l1, l2  = mapv(maybe_force, l1, l2)
+    seen    = seen or set()
+
+    if debug:
+        print(f'merge | 1: { pformat(l1) }, 2: { pformat(l2) })')
+        print(f'      | s: { seen }')
 
     if not l1:
         return l2
@@ -121,7 +129,7 @@ def merge(l1: Union[Lexer, Thunk], l2: Union[Lexer, Thunk], debug=False) -> Lexe
     else:
         ss1, ss2 = set(l1.keys()), set(l2.keys())
         css      = ss1 & ss2
-        merged   = {s: mergemany(l1[s], l2[s], debug) for s in css}
+        merged   = {s: mergemany(set(l1[s]), set(l2[s]), seen, debug) for s in css}
         merged.update({s: l1[s] for s in ss1 - ss2})
         merged.update({s: l2[s] for s in ss2 - ss1})
         return Lexer(merged)
@@ -130,7 +138,7 @@ def mapvalues(f, d: Dict) -> Dict:
     return {k: [f(x) for x in v] for k, v in d.items()}
 
 
-def maybe_force(expr: Union[Thunk, Lexer]) -> Lexer:
+def maybe_force(expr: LexerOrThunk) -> Lexer:
     return maybe_force(expr()) if isinstance(expr, Thunk) else expr
 
 # TODO: This cannot work in Python.
@@ -235,7 +243,7 @@ class Lit(UnExp):
 class Seq(BinExp):
     def __call__(self, lexer: Lexer) -> Lexer:
         # return Thunk(lambda: self.a(Thunk(lambda: self.b(lexer))))
-        return self.a(self.b(lexer))
+        return self.a(Thunk(lambda: self.b(lexer)))
 
 class Alt(BinExp):
     def __call__(self, lexer: Lexer) -> Lexer:

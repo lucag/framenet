@@ -1,5 +1,7 @@
 // main.js
 
+'use strict';
+
 require.config({ paths: {
   d3:     'http://d3js.org/d3.v3.min'
   // d3:     '/nbextensions/nbext/d3.v3.min'

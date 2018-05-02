@@ -1,4 +1,6 @@
-//
+// sankey.js
+
+'use strict';
 
 require.config({
   paths: {
